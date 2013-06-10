@@ -37,9 +37,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WebServer2\WebServer\bin\Debug\Plugins\WebServer.exe</HintPath>
+    <Reference Include="WebServer">
+      <HintPath>..\..\WebServer2\WebServer\bin\Debug\WebServer.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +50,6 @@
     <Compile Include="Entities\Konto.cs" />
     <Compile Include="Entities\Projekt.cs" />
     <Compile Include="Entities\Zeiterfassung.cs" />
-    <Compile Include="MockDAL.cs" />
     <Compile Include="ParsingLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Kontakt.cs" />

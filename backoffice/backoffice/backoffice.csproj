@@ -62,12 +62,6 @@
     <Compile Include="EditEingangsrechnungenForm.Designer.cs">
       <DependentUpon>EditEingangsrechnungenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditKontoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditKontoForm.Designer.cs">
-      <DependentUpon>EditKontoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditZeiterfassungForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditKontaktForm.resx">
       <DependentUpon>EditKontaktForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditKontoForm.resx">
-      <DependentUpon>EditKontoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditKundeForm.resx">
       <DependentUpon>EditKundeForm.cs</DependentUpon>

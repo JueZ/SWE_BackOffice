@@ -15,19 +15,19 @@ namespace backofficePlugin
     class BL
     {
         DAL myDAL;
-        Fake_DAL fakeDal;
+ //       Fake_DAL fakeDal;
         public List<EntityInterface> check(string _sqlSelect, string from, int useFake = 0)
         {
-            if (useFake == 0)
-            {
+//            if (useFake == 0)
+//            {
                 myDAL = new DAL();
                 return myDAL.sql(_sqlSelect, from);
-            }
-            else
-            {
-                fakeDal = new Fake_DAL();
-                return fakeDal.sql(_sqlSelect, from);
-            }
+//            }
+//            else
+//            {
+//                fakeDal = new Fake_DAL();
+//                return fakeDal.sql(_sqlSelect, from);
+//            }
             
         }
         public string update(List<EntityInterface> liste, string from, int useFake = 0)

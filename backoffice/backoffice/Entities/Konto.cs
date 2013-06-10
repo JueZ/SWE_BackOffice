@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace backoffice
 {
-    public class Konto : EntityInterface
+    public class Konto : EntityInterface 
+    {
     
         private int _BuchungzeileID;
         private int _FK_AusgangsrechnungID;

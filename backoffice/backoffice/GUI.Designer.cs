@@ -224,17 +224,6 @@
             this.editKonto.UseVisualStyleBackColor = true;
             this.editKonto.Click += new System.EventHandler(this.edit_Click);
             // 
-            // addKonto
-            // 
-            this.addKonto.BackColor = System.Drawing.SystemColors.Control;
-            this.addKonto.Location = new System.Drawing.Point(850, 6);
-            this.addKonto.Name = "addKonto";
-            this.addKonto.Size = new System.Drawing.Size(120, 35);
-            this.addKonto.TabIndex = 12;
-            this.addKonto.Text = "Konto hinzufügen";
-            this.addKonto.UseVisualStyleBackColor = false;
-            this.addKonto.Click += new System.EventHandler(this.addKonto_Click);
-            // 
             // dataGridViewKonto
             // 
             this.dataGridViewKonto.BackgroundColor = System.Drawing.SystemColors.ControlLight;

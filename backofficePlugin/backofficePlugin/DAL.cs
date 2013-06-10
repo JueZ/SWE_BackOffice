@@ -30,28 +30,28 @@ namespace backofficePlugin
                     switch (from)
                     {
                         case "Kunde":
-                            sqlQuery = "SELECT * from dbo." + from;
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Kontakt":
-                            sqlQuery = "SELECT * from dbo." + from;
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Angebot":
                             sqlQuery = "SELECT AngebotID, FK_ProjektID, FK_KundeID, FK_AusgangsrechnungID, Angebotsname, Angebotssumme, Kunde, Dauer, Datum, UmsetzungsChance FROM dbo." + from + "JOIN dbo.Kunde ON (Kunde.FK_KundeID = Kunde.KundeID)";
                             break;
                         case "Projekt":
-                            sqlQuery = "SELECT * from dbo." + from + " where Name like @param";
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Ausgangsrechnung":
-                            sqlQuery = "SELECT * from dbo." + from;
+                            sqlQuery = "SELECT AusgangsrechnungID, Name, Nachname, Datum, SUM(Angebotssumme), Bezahlt FROM dbo." + from +" JOIN Projekt ON AusgangsrechnungID = ProjektID JOIN Kunden ON FK_KundeID = KundeID JOIN Angebot ON AusgangsrechnungID = FK_AusgangsrechnungID WHERE ";
                             break;
                         case "Eingangsrechnung":
-                            sqlQuery = "SELECT * from dbo." + from;
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Konto":
-                            sqlQuery = "SELECT * from dbo." + from + "where Name @param";
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Zeiterfassung":
-                            sqlQuery = "SELECT * from dbo." + from;
+                            sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                     }
                 else
@@ -59,16 +59,16 @@ namespace backofficePlugin
                     switch (from)
                     {
                         case "Kunde":
-                            sqlQuery = "SELECT * from dbo." + from + " where Firma like @param or Vorname like @param or Nachname like @param or Land like @param or Strasse like @param";
+                            sqlQuery = "SELECT * from dbo." + from + " WHERE Firma like @param or Vorname like @param or Nachname like @param or Land like @param or Strasse like @param";
                             break;
                         case "Kontakt":
-                            sqlQuery = "SELECT * from dbo." + from + " where Firma like @param or Vorname like @param or Nachname like @param or Land like @param or Strasse like @param";
+                            sqlQuery = "SELECT * from dbo." + from + " WHERE Firma like @param or Vorname like @param or Nachname like @param or Land like @param or Strasse like @param";
                             break;
                         case "Angebot":
                             sqlQuery = "SELECT * FROM dbo.Angebot JOIN dbo.Projekt ON (Angebot.FK_ProjektID = Projekt.ProjektID) WHERE Angebotsname LIKE @param";
                             break;
                         case "Projekt":
-                            sqlQuery = "SELECT * from dbo." + from + " where Name like @param";
+                            sqlQuery = "SELECT * from dbo." + from + " WHERE Name like @param";
                             break;
                         case "Ausgangsrechnung":
                             sqlQuery = "SELECT * from dbo." + from;
@@ -77,7 +77,7 @@ namespace backofficePlugin
                             sqlQuery = "SELECT * from dbo." + from;
                             break;
                         case "Konto":
-                            sqlQuery = "SELECT * from dbo." + from + "where Name @param";
+                            sqlQuery = "SELECT * from dbo." + from + "WHERE Name @param";
                             break;
                         case "Zeiterfassung":
                             sqlQuery = "SELECT * from dbo." + from;
@@ -489,11 +489,22 @@ namespace backofficePlugin
                                     sqlCmd.CommandText = sqlQuery;
                                     a += sqlCmd.ExecuteNonQuery();
                                 }
+
+                                foreach (Ausgangsrechnung k in liste)
+                                {
+                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung ";
+                                    sqlQuery += "([FK_ProjektID]) VALUES ((SELECT TOP 1 ProjektID FROM dbo.Projekt ORDER BY ProjektID DESC))";
+
+
+                                    sqlCmd.CommandText = sqlQuery;
+                                    a += sqlCmd.ExecuteNonQuery();
+                                }
                                 break;
                     case "Projekt":
                                 foreach (Projekt k in liste)
                                 {
-                                    sqlQuery = "INSERT INTO dbo.Projekt VALUES (";
+                                    sqlQuery = "INSERT INTO dbo.Projekt ";
+                                    sqlQuery = "([Name])  VALUES (";
                                     sqlQuery += "'" + k.Name.ToString() + "')";
 
 
@@ -503,8 +514,7 @@ namespace backofficePlugin
 
                                 foreach (Ausgangsrechnung k in liste)
                                 {
-                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung ";
-                                    sqlQuery += "([FK_ProjektID]) VALUES ((SELECT TOP 1 ProjektID FROM dbo.Projekt ORDER BY ProjektID DESC))";
+                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung DEFAULT VALUES";
 
 
                                     sqlCmd.CommandText = sqlQuery;
@@ -647,16 +657,6 @@ namespace backofficePlugin
                         {
                             sqlQuery = "DELETE FROM dbo.Eingangsrechnung ";
                             sqlQuery += "WHERE EingangsrechnungID = '" + k.EingangsrechnungID.ToString() + "';";
-
-                            sqlCmd.CommandText = sqlQuery;
-                            a += sqlCmd.ExecuteNonQuery();
-                        }
-                        break;
-                    case "Konto":
-                        foreach (Konto k in liste)
-                        {
-                            sqlQuery = "DELETE FROM dbo.Konto ";
-                            sqlQuery += "WHERE KontoID = '" + k.BuchungszeileID.ToString() + "';";
 
                             sqlCmd.CommandText = sqlQuery;
                             a += sqlCmd.ExecuteNonQuery();

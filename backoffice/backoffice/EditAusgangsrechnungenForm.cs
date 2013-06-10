@@ -16,16 +16,8 @@ namespace backoffice
         {
             InitializeComponent();
 
-            if (newAusgangsrechnung)
-            {
-                Ausgangsrechnung_AusgangsrechnungID.Text = "none";
-                this.Text = "Neue Ausgangsrechnung anlegen";
-            }
-            else
-            {
-                Ausgangsrechnung_AusgangsrechnungID.Text = a.AusgangsrechnungID.ToString();
-                this.Text = "Ausgangsrechnung bearbeiten";
-            }
+            Ausgangsrechnung_AusgangsrechnungID.Text = a.AusgangsrechnungID.ToString();
+            this.Text = "Ausgangsrechnung bearbeiten";
         }
 
         private void Discard_Ausgangsrechnung_Click(object sender, EventArgs e)
@@ -42,20 +34,11 @@ namespace backoffice
             Ausgangsrechnung a = new Ausgangsrechnung();
 
 
-            a.FK_ProjektID = Convert.ToInt32(Ausgangsrechnung_FK_ProjektID.Text);
-            a.FK_KundeID = Convert.ToInt32(Ausgangsrechnung_FK_KundeID.Text);
+            a.Bezahlt = Convert.ToBoolean(Ausgangsrechnung_Bezahlt.Checked);
 
-            if (Ausgangsrechnung_AusgangsrechnungID.Text == "none")
-            {
-                ausgangsrechnungListe.Add(a);
-                myProxy.add(ausgangsrechnungListe, "Ausgangsrechnung");
-            }
-            else
-            {
                 a.AusgangsrechnungID = Convert.ToInt32(Ausgangsrechnung_AusgangsrechnungID.Text);
                 ausgangsrechnungListe.Add(a);
                 myProxy.edit(ausgangsrechnungListe, "Ausgangsrechnung");
-            }
 
             this.Close();
         }

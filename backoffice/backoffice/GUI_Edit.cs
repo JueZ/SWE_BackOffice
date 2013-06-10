@@ -15,7 +15,6 @@ namespace backoffice
         private EditProjektForm editProjektForm;
         private EditAusgangsrechnungenForm editAusgangsrechnungenForm;
         private EditEingangsrechnungenForm editEingangsrechnungenForm;
-        private EditKontoForm editKontoForm;
         private EditZeiterfassungForm editZeiterfassungForm;
 
         //------------------------------------------------------------------------edit functions START----------------------------------------------------//
@@ -109,7 +108,7 @@ namespace backoffice
                         x = selRow.Index;
                         angebot.AngebotID = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["AngebotID"].Index].Value.ToString());
                         angebot.Angebotsname = dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotsname"].Index].Value.ToString();
-                        angebot.Angebotssumme = Convert.ToDecimal(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotssumme"].Index].Value.ToString());
+                        angebot.Angebotssumme = float.Parse(Convert.ToString(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotssumme"].Index].Value.ToString()));
                         angebot.Datum = Convert.ToDateTime(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Datum"].Index].Value.ToString());
                         angebot.Dauer = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Dauer"].Index].Value.ToString());
 
@@ -145,8 +144,7 @@ namespace backoffice
                     {
                         x = selRow.Index;
                         ausgangsrechnung.AusgangsrechnungID = Convert.ToInt32(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["AusgangsrechnungID"].Index].Value.ToString());
-                        ausgangsrechnung.FK_ProjektID = Convert.ToInt32(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["FK_ProjektID"].Index].Value.ToString());
-                        ausgangsrechnung.FK_KundeID = Convert.ToInt32(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["FK_KundeID"].Index].Value.ToString());
+                        ausgangsrechnung.Bezahlt = Convert.ToBoolean(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Bezahlt"].Index].Value.ToString());
 
                         this.editAusgangsrechnungenForm = new EditAusgangsrechnungenForm(ausgangsrechnung, false);
                         //on new editForm Close() the dataGridVIewKontakt will be refreshed
@@ -171,26 +169,7 @@ namespace backoffice
                         editEingangsrechnungenForm.Show();
                     }
                     break;
-                case "dataGridViewKonto":
-                case "editKonto":
 
-                    Konto konto = new Konto();
-
-                    foreach (DataGridViewRow selRow in dataGridViewKonto.SelectedRows)
-                    {
-                        x = selRow.Index;
-                        konto.KontoID = Convert.ToInt32(dataGridViewKonto.Rows[x].Cells[dataGridViewKonto.Columns["KontoID"].Index].Value.ToString());
-                        konto.Kontonummer = Convert.ToInt32(dataGridViewKonto.Rows[x].Cells[dataGridViewKonto.Columns["Kontonummer"].Index].Value.ToString());
-                        konto.Bankleitzahl = Convert.ToInt32(dataGridViewKonto.Rows[x].Cells[dataGridViewKonto.Columns["Bankleitzahl"].Index].Value.ToString());
-                        konto.Name = Convert.ToString(dataGridViewKonto.Rows[x].Cells[dataGridViewKonto.Columns["Name"].Index].Value.ToString());
-                        konto.Kontostand = Convert.ToInt32(dataGridViewKonto.Rows[x].Cells[dataGridViewKonto.Columns["Kontostand"].Index].Value.ToString());
-
-                        this.editKontoForm = new EditKontoForm(konto, false);
-                        //on new editForm Close() the dataGridVIewKontakt will be refreshed
-                        editKontoForm.FormClosed += new FormClosedEventHandler(reloadOnFormClose);
-                        editKontoForm.Show();
-                    }
-                    break;
                 case "dataGridViewZeiterfassung":
                 case "editZeiterfassung":
 
@@ -268,14 +247,6 @@ namespace backoffice
             this.editEingangsrechnungenForm = new EditEingangsrechnungenForm(k, true);
             editEingangsrechnungenForm.FormClosed += new FormClosedEventHandler(reloadOnFormClose);
             editEingangsrechnungenForm.ShowDialog();
-        }
-
-        private void addKonto_Click(object sender, EventArgs e)
-        {
-            Konto k = new Konto();
-            this.editKontoForm = new EditKontoForm(k, true);
-            editKontoForm.FormClosed += new FormClosedEventHandler(reloadOnFormClose);
-            editKontoForm.ShowDialog();
         }
 
         private void addZeiterfassung_Click(object sender, EventArgs e)

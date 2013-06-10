@@ -150,22 +150,6 @@ namespace backoffice
                     Ausgangsrechnung.PerformClick();
                 }
             }
-            else if (entity == "Konto")
-            {
-                foreach (DataGridViewRow selRow in dataGridViewKonto.SelectedRows)
-                {
-                    Konto konto = new Konto();
-                    konto.KontoID = Convert.ToInt32(dataGridViewKonto.Rows[selRow.Index].Cells[dataGridViewKonto.Columns["KontoID"].Index].Value.ToString());
-                    liste.Add(konto);
-                }
-
-
-                if (MessageBox.Show(dataGridViewKonto.SelectedRows.Count + " Datensätze werden unwiderruflich gelöscht!\n", "Datensätze löschen", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    myRequest.delete(liste, entity);
-                    Konto.PerformClick();
-                }
-            }
             else if (entity == "Zeiterfassung")
             {
                 foreach (DataGridViewRow selRow in dataGridViewZeiterfassung.SelectedRows)
