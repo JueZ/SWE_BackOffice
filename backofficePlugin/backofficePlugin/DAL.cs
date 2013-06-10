@@ -14,7 +14,7 @@ using System.Globalization;
 
 namespace backofficePlugin
 {
-    class DAL
+    public class DAL
     {
         private SqlConnection sqlCon = new SqlConnection(@"Server=server.xios.at;Database=EPU;User Id=jakob; Password=h1EQSDg3idYd;");
         public List<EntityInterface> sql(string _sqlSELECT, string from)

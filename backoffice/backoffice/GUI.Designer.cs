@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.KontoTab = new System.Windows.Forms.TabPage();
-            this.deleteKonto = new System.Windows.Forms.Button();
-            this.editKonto = new System.Windows.Forms.Button();
+            this.KontoExportieren = new System.Windows.Forms.Button();
             this.dataGridViewKonto = new System.Windows.Forms.DataGridView();
             this.Konto = new System.Windows.Forms.Button();
             this.textBoxKonto = new System.Windows.Forms.TextBox();
@@ -89,7 +88,9 @@
             this.Kunde = new System.Windows.Forms.Button();
             this.textBoxKunde = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.KontoExportieren = new System.Windows.Forms.Button();
+            this.KontostandUpdate = new System.Windows.Forms.Button();
+            this.lblKontostand = new System.Windows.Forms.Label();
+            this.lblKontostandWert = new System.Windows.Forms.Label();
             this.KontoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKonto)).BeginInit();
             this.Eingangsrechnungen.SuspendLayout();
@@ -110,9 +111,10 @@
             // KontoTab
             // 
             this.KontoTab.BackColor = System.Drawing.Color.Wheat;
+            this.KontoTab.Controls.Add(this.lblKontostandWert);
+            this.KontoTab.Controls.Add(this.lblKontostand);
+            this.KontoTab.Controls.Add(this.KontostandUpdate);
             this.KontoTab.Controls.Add(this.KontoExportieren);
-            this.KontoTab.Controls.Add(this.deleteKonto);
-            this.KontoTab.Controls.Add(this.editKonto);
             this.KontoTab.Controls.Add(this.dataGridViewKonto);
             this.KontoTab.Controls.Add(this.Konto);
             this.KontoTab.Controls.Add(this.textBoxKonto);
@@ -123,25 +125,15 @@
             this.KontoTab.TabIndex = 6;
             this.KontoTab.Text = "Konto";
             // 
-            // deleteKonto
+            // KontoExportieren
             // 
-            this.deleteKonto.Location = new System.Drawing.Point(703, 6);
-            this.deleteKonto.Name = "deleteKonto";
-            this.deleteKonto.Size = new System.Drawing.Size(141, 35);
-            this.deleteKonto.TabIndex = 14;
-            this.deleteKonto.Text = "Ausgewählte Konten löschen";
-            this.deleteKonto.UseVisualStyleBackColor = true;
-            this.deleteKonto.Click += new System.EventHandler(this.deleteKonto_Click);
-            // 
-            // editKonto
-            // 
-            this.editKonto.Location = new System.Drawing.Point(986, 6);
-            this.editKonto.Name = "editKonto";
-            this.editKonto.Size = new System.Drawing.Size(141, 35);
-            this.editKonto.TabIndex = 13;
-            this.editKonto.Text = "Ausgewählte Konten bearbeiten";
-            this.editKonto.UseVisualStyleBackColor = true;
-            this.editKonto.Click += new System.EventHandler(this.edit_Click);
+            this.KontoExportieren.Location = new System.Drawing.Point(536, 0);
+            this.KontoExportieren.Name = "KontoExportieren";
+            this.KontoExportieren.Size = new System.Drawing.Size(161, 48);
+            this.KontoExportieren.TabIndex = 15;
+            this.KontoExportieren.Text = "Kontodaten als PDF exportieren";
+            this.KontoExportieren.UseVisualStyleBackColor = true;
+            this.KontoExportieren.Click += new System.EventHandler(this.KontoExportieren_Click);
             // 
             // dataGridViewKonto
             // 
@@ -777,15 +769,33 @@
             this.tabControl1.Size = new System.Drawing.Size(1146, 579);
             this.tabControl1.TabIndex = 0;
             // 
-            // KontoExportieren
+            // KontostandUpdate
             // 
-            this.KontoExportieren.Location = new System.Drawing.Point(536, 0);
-            this.KontoExportieren.Name = "KontoExportieren";
-            this.KontoExportieren.Size = new System.Drawing.Size(161, 48);
-            this.KontoExportieren.TabIndex = 15;
-            this.KontoExportieren.Text = "Kontodaten als PDF exportieren";
-            this.KontoExportieren.UseVisualStyleBackColor = true;
-            this.KontoExportieren.Click += new System.EventHandler(this.KontoExportieren_Click);
+            this.KontostandUpdate.Location = new System.Drawing.Point(849, 3);
+            this.KontostandUpdate.Name = "KontostandUpdate";
+            this.KontostandUpdate.Size = new System.Drawing.Size(75, 42);
+            this.KontostandUpdate.TabIndex = 16;
+            this.KontostandUpdate.Text = "Kontostand aktualisieren";
+            this.KontostandUpdate.UseVisualStyleBackColor = true;
+            this.KontostandUpdate.Click += new System.EventHandler(this.KontostandUpdate_Click);
+            // 
+            // lblKontostand
+            // 
+            this.lblKontostand.AutoSize = true;
+            this.lblKontostand.Location = new System.Drawing.Point(930, 13);
+            this.lblKontostand.Name = "lblKontostand";
+            this.lblKontostand.Size = new System.Drawing.Size(64, 13);
+            this.lblKontostand.TabIndex = 17;
+            this.lblKontostand.Text = "Kontostand:";
+            // 
+            // lblKontostandWert
+            // 
+            this.lblKontostandWert.AutoSize = true;
+            this.lblKontostandWert.Location = new System.Drawing.Point(1000, 13);
+            this.lblKontostandWert.Name = "lblKontostandWert";
+            this.lblKontostandWert.Size = new System.Drawing.Size(16, 13);
+            this.lblKontostandWert.TabIndex = 18;
+            this.lblKontostandWert.Text = "...";
             // 
             // GUI
             // 
@@ -868,7 +878,6 @@
         private System.Windows.Forms.Button deleteKontakt;
         private System.Windows.Forms.TextBox Result_Ausgangsrechnung;
         private System.Windows.Forms.TextBox Result_Eingangsrechnung;
-        private System.Windows.Forms.Button editKonto;
         private System.Windows.Forms.Button editEingangsrechnung;
         private System.Windows.Forms.Button addEingangsrechnung;
         private System.Windows.Forms.Button editAusgangsrechnung;
@@ -878,7 +887,6 @@
         private System.Windows.Forms.Button editAngebot;
         private System.Windows.Forms.Button addAngebot;
         private System.Windows.Forms.Button deleteProjekt;
-        private System.Windows.Forms.Button deleteKonto;
         private System.Windows.Forms.Button deleteEingangsrechnung;
         private System.Windows.Forms.Button deleteAusgangsrechnung;
         private System.Windows.Forms.Button deleteAngebot;
@@ -886,6 +894,9 @@
         private System.Windows.Forms.Button EingangsrechnungenPDF;
         private System.Windows.Forms.Button ZeitenImportieren;
         private System.Windows.Forms.Button KontoExportieren;
+        private System.Windows.Forms.Label lblKontostandWert;
+        private System.Windows.Forms.Label lblKontostand;
+        private System.Windows.Forms.Button KontostandUpdate;
 
     }
 }

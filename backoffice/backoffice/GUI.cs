@@ -328,6 +328,21 @@ namespace backoffice
             }
         }
 
+        private void KontostandUpdate_Click(object sender, EventArgs e)
+        {
+            List<EntityInterface> liste = new List<EntityInterface>();
+            liste = myRequest.request("none", "Konto");
+
+            float Kontostand = 0;
+
+            foreach (Konto k in liste)
+            {
+                Kontostand += float.Parse(Convert.ToString(k.Summe)); 
+            }
+
+            lblKontostandWert.Text = Kontostand.ToString();
+        }
+
 
     }
 }

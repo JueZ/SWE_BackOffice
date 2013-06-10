@@ -460,32 +460,6 @@ namespace backofficepluginUnitTest
             Assert.AreEqual(date, konto.Datum, "Fehlgeschlagen");
         }
         [TestMethod]
-        public void Konto_Test_5()
-        {
-            Konto konto = new Konto();
-
-            konto.FK_AusgangsrechnungID = 1;
-
-            Assert.AreEqual(1, konto.FK_AusgangsrechnungID, "Fehlgeschlagen");
-        }
-        [TestMethod]
-        public void Konto_Test_6()
-        {
-            Konto konto = new Konto();
-
-            konto.FK_EingangsrechnungID = 1;
-
-            Assert.AreEqual(1, konto.FK_EingangsrechnungID, "Fehlgeschlagen");
-        }
-        [TestMethod]
-        public void Konto_Test_7()
-        {
-            Konto konto = new Konto();
-
-            konto.Projekt = "Name";
-            Assert.AreEqual("Name", konto.Projekt, "Fehlgeschlagen");
-        }
-        [TestMethod]
         public void Konto_Test_8()
         {
             Konto konto = new Konto();

@@ -12,7 +12,7 @@ using System.Data;
 
 namespace backofficePlugin
 {
-    class BL
+    public class BL
     {
         DAL myDAL;
  //       Fake_DAL fakeDal;
