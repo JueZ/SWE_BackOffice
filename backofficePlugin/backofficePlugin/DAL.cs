@@ -150,6 +150,7 @@ namespace backofficePlugin
                             k.FK_KundeID = Convert.ToInt32(reihe["FK_KundeID"]);
                             k.Angebotsname = Convert.ToString(reihe["Angebotsname"]);
                             k.Angebotssumme = float.Parse(Convert.ToString(reihe["Angebotssumme"]));
+                            k.Kunde = Convert.ToString(reihe["Nachname"]);
                             k.Dauer = Convert.ToInt32(reihe["Dauer"]);
                             k.Datum = Convert.ToDateTime(reihe["Datum"]);
                             k.UmsetzungsChance = Convert.ToInt32(reihe["UmsetzungsChance"]);

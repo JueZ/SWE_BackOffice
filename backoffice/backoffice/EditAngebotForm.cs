@@ -26,6 +26,13 @@ namespace backoffice
         private TextBox Angebot_AngebotID;
         private TextBox Angebot_UmsetzungsChance;
         private TextBox Angebot_Datum;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
         private Button Discard_Angebot;
     
         public EditAngebotForm(Angebot a, bool newAngebot)
@@ -109,11 +116,18 @@ namespace backoffice
             this.Angebot_AngebotID = new System.Windows.Forms.TextBox();
             this.Angebot_UmsetzungsChance = new System.Windows.Forms.TextBox();
             this.Angebot_Datum = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Save_Angebot
             // 
-            this.Save_Angebot.Location = new System.Drawing.Point(197, 13);
+            this.Save_Angebot.Location = new System.Drawing.Point(223, 13);
             this.Save_Angebot.Name = "Save_Angebot";
             this.Save_Angebot.Size = new System.Drawing.Size(75, 23);
             this.Save_Angebot.TabIndex = 0;
@@ -123,7 +137,7 @@ namespace backoffice
             // 
             // Discard_Angebot
             // 
-            this.Discard_Angebot.Location = new System.Drawing.Point(196, 43);
+            this.Discard_Angebot.Location = new System.Drawing.Point(222, 43);
             this.Discard_Angebot.Name = "Discard_Angebot";
             this.Discard_Angebot.Size = new System.Drawing.Size(75, 23);
             this.Discard_Angebot.TabIndex = 1;
@@ -133,42 +147,42 @@ namespace backoffice
             // 
             // Angebot_FK_ProjektID
             // 
-            this.Angebot_FK_ProjektID.Location = new System.Drawing.Point(13, 13);
+            this.Angebot_FK_ProjektID.Location = new System.Drawing.Point(117, 13);
             this.Angebot_FK_ProjektID.Name = "Angebot_FK_ProjektID";
             this.Angebot_FK_ProjektID.Size = new System.Drawing.Size(100, 20);
             this.Angebot_FK_ProjektID.TabIndex = 2;
             // 
             // Angebot_FK_KundeID
             // 
-            this.Angebot_FK_KundeID.Location = new System.Drawing.Point(13, 40);
+            this.Angebot_FK_KundeID.Location = new System.Drawing.Point(117, 40);
             this.Angebot_FK_KundeID.Name = "Angebot_FK_KundeID";
             this.Angebot_FK_KundeID.Size = new System.Drawing.Size(100, 20);
             this.Angebot_FK_KundeID.TabIndex = 3;
             // 
             // Angebot_Dauer
             // 
-            this.Angebot_Dauer.Location = new System.Drawing.Point(11, 145);
+            this.Angebot_Dauer.Location = new System.Drawing.Point(117, 118);
             this.Angebot_Dauer.Name = "Angebot_Dauer";
             this.Angebot_Dauer.Size = new System.Drawing.Size(100, 20);
             this.Angebot_Dauer.TabIndex = 7;
             // 
             // Angebot_Angebotssumme
             // 
-            this.Angebot_Angebotssumme.Location = new System.Drawing.Point(12, 119);
+            this.Angebot_Angebotssumme.Location = new System.Drawing.Point(117, 92);
             this.Angebot_Angebotssumme.Name = "Angebot_Angebotssumme";
             this.Angebot_Angebotssumme.Size = new System.Drawing.Size(100, 20);
             this.Angebot_Angebotssumme.TabIndex = 6;
             // 
             // Angebot_Angebotsname
             // 
-            this.Angebot_Angebotsname.Location = new System.Drawing.Point(12, 92);
+            this.Angebot_Angebotsname.Location = new System.Drawing.Point(117, 66);
             this.Angebot_Angebotsname.Name = "Angebot_Angebotsname";
             this.Angebot_Angebotsname.Size = new System.Drawing.Size(100, 20);
             this.Angebot_Angebotsname.TabIndex = 5;
             // 
             // Angebot_AngebotID
             // 
-            this.Angebot_AngebotID.Location = new System.Drawing.Point(10, 224);
+            this.Angebot_AngebotID.Location = new System.Drawing.Point(117, 196);
             this.Angebot_AngebotID.Name = "Angebot_AngebotID";
             this.Angebot_AngebotID.Size = new System.Drawing.Size(100, 20);
             this.Angebot_AngebotID.TabIndex = 10;
@@ -176,21 +190,91 @@ namespace backoffice
             // 
             // Angebot_UmsetzungsChance
             // 
-            this.Angebot_UmsetzungsChance.Location = new System.Drawing.Point(11, 198);
+            this.Angebot_UmsetzungsChance.Location = new System.Drawing.Point(117, 170);
             this.Angebot_UmsetzungsChance.Name = "Angebot_UmsetzungsChance";
             this.Angebot_UmsetzungsChance.Size = new System.Drawing.Size(100, 20);
             this.Angebot_UmsetzungsChance.TabIndex = 9;
             // 
             // Angebot_Datum
             // 
-            this.Angebot_Datum.Location = new System.Drawing.Point(11, 171);
+            this.Angebot_Datum.Location = new System.Drawing.Point(117, 144);
             this.Angebot_Datum.Name = "Angebot_Datum";
             this.Angebot_Datum.Size = new System.Drawing.Size(100, 20);
             this.Angebot_Datum.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "FK_ProjektID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "FK_KundeID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Angebotsname";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Angebotssumme";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Dauer";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Datum";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Umsetzungschance";
+            // 
             // EditAngebotForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(326, 262);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Angebot_AngebotID);
             this.Controls.Add(this.Angebot_UmsetzungsChance);
             this.Controls.Add(this.Angebot_Datum);

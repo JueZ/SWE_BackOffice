@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
             this.KontoTab = new System.Windows.Forms.TabPage();
+            this.lblKontostandWert = new System.Windows.Forms.Label();
+            this.lblKontostand = new System.Windows.Forms.Label();
+            this.KontostandUpdate = new System.Windows.Forms.Button();
             this.KontoExportieren = new System.Windows.Forms.Button();
             this.dataGridViewKonto = new System.Windows.Forms.DataGridView();
             this.Konto = new System.Windows.Forms.Button();
@@ -45,9 +48,7 @@
             this.textBoxEingangsrechnung = new System.Windows.Forms.TextBox();
             this.Ausgangsrechnungen = new System.Windows.Forms.TabPage();
             this.AusgangsrechnungenPDF = new System.Windows.Forms.Button();
-            this.deleteAusgangsrechnung = new System.Windows.Forms.Button();
             this.editAusgangsrechnung = new System.Windows.Forms.Button();
-            this.addAusgangsrechnung = new System.Windows.Forms.Button();
             this.Result_Ausgangsrechnung = new System.Windows.Forms.TextBox();
             this.dataGridViewAusgangsrechnung = new System.Windows.Forms.DataGridView();
             this.Ausgangsrechnung = new System.Windows.Forms.Button();
@@ -88,9 +89,6 @@
             this.Kunde = new System.Windows.Forms.Button();
             this.textBoxKunde = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.KontostandUpdate = new System.Windows.Forms.Button();
-            this.lblKontostand = new System.Windows.Forms.Label();
-            this.lblKontostandWert = new System.Windows.Forms.Label();
             this.KontoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKonto)).BeginInit();
             this.Eingangsrechnungen.SuspendLayout();
@@ -124,6 +122,34 @@
             this.KontoTab.Size = new System.Drawing.Size(1138, 553);
             this.KontoTab.TabIndex = 6;
             this.KontoTab.Text = "Konto";
+            // 
+            // lblKontostandWert
+            // 
+            this.lblKontostandWert.AutoSize = true;
+            this.lblKontostandWert.Location = new System.Drawing.Point(1000, 13);
+            this.lblKontostandWert.Name = "lblKontostandWert";
+            this.lblKontostandWert.Size = new System.Drawing.Size(16, 13);
+            this.lblKontostandWert.TabIndex = 18;
+            this.lblKontostandWert.Text = "...";
+            // 
+            // lblKontostand
+            // 
+            this.lblKontostand.AutoSize = true;
+            this.lblKontostand.Location = new System.Drawing.Point(930, 13);
+            this.lblKontostand.Name = "lblKontostand";
+            this.lblKontostand.Size = new System.Drawing.Size(64, 13);
+            this.lblKontostand.TabIndex = 17;
+            this.lblKontostand.Text = "Kontostand:";
+            // 
+            // KontostandUpdate
+            // 
+            this.KontostandUpdate.Location = new System.Drawing.Point(849, 3);
+            this.KontostandUpdate.Name = "KontostandUpdate";
+            this.KontostandUpdate.Size = new System.Drawing.Size(75, 42);
+            this.KontostandUpdate.TabIndex = 16;
+            this.KontostandUpdate.Text = "Kontostand aktualisieren";
+            this.KontostandUpdate.UseVisualStyleBackColor = true;
+            this.KontostandUpdate.Click += new System.EventHandler(this.KontostandUpdate_Click);
             // 
             // KontoExportieren
             // 
@@ -267,9 +293,7 @@
             // 
             this.Ausgangsrechnungen.BackColor = System.Drawing.Color.Wheat;
             this.Ausgangsrechnungen.Controls.Add(this.AusgangsrechnungenPDF);
-            this.Ausgangsrechnungen.Controls.Add(this.deleteAusgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.editAusgangsrechnung);
-            this.Ausgangsrechnungen.Controls.Add(this.addAusgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.Result_Ausgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.dataGridViewAusgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.Ausgangsrechnung);
@@ -291,16 +315,6 @@
             this.AusgangsrechnungenPDF.UseVisualStyleBackColor = true;
             this.AusgangsrechnungenPDF.Click += new System.EventHandler(this.AusgangsrechnungenPDF_Click);
             // 
-            // deleteAusgangsrechnung
-            // 
-            this.deleteAusgangsrechnung.Location = new System.Drawing.Point(685, 6);
-            this.deleteAusgangsrechnung.Name = "deleteAusgangsrechnung";
-            this.deleteAusgangsrechnung.Size = new System.Drawing.Size(159, 35);
-            this.deleteAusgangsrechnung.TabIndex = 12;
-            this.deleteAusgangsrechnung.Text = "Ausgewählte Ausgangsrechnungen löschen";
-            this.deleteAusgangsrechnung.UseVisualStyleBackColor = true;
-            this.deleteAusgangsrechnung.Click += new System.EventHandler(this.deleteAusgangsrechnung_Click);
-            // 
             // editAusgangsrechnung
             // 
             this.editAusgangsrechnung.Location = new System.Drawing.Point(986, 6);
@@ -310,17 +324,6 @@
             this.editAusgangsrechnung.Text = "Ausgewählte Rechnungen bearbeiten";
             this.editAusgangsrechnung.UseVisualStyleBackColor = true;
             this.editAusgangsrechnung.Click += new System.EventHandler(this.edit_Click);
-            // 
-            // addAusgangsrechnung
-            // 
-            this.addAusgangsrechnung.BackColor = System.Drawing.SystemColors.Control;
-            this.addAusgangsrechnung.Location = new System.Drawing.Point(850, 6);
-            this.addAusgangsrechnung.Name = "addAusgangsrechnung";
-            this.addAusgangsrechnung.Size = new System.Drawing.Size(120, 35);
-            this.addAusgangsrechnung.TabIndex = 10;
-            this.addAusgangsrechnung.Text = "Ausgangsrechnung hinzufügen";
-            this.addAusgangsrechnung.UseVisualStyleBackColor = false;
-            this.addAusgangsrechnung.Click += new System.EventHandler(this.addAusgangsrechnung_Click);
             // 
             // Result_Ausgangsrechnung
             // 
@@ -769,34 +772,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1146, 579);
             this.tabControl1.TabIndex = 0;
             // 
-            // KontostandUpdate
-            // 
-            this.KontostandUpdate.Location = new System.Drawing.Point(849, 3);
-            this.KontostandUpdate.Name = "KontostandUpdate";
-            this.KontostandUpdate.Size = new System.Drawing.Size(75, 42);
-            this.KontostandUpdate.TabIndex = 16;
-            this.KontostandUpdate.Text = "Kontostand aktualisieren";
-            this.KontostandUpdate.UseVisualStyleBackColor = true;
-            this.KontostandUpdate.Click += new System.EventHandler(this.KontostandUpdate_Click);
-            // 
-            // lblKontostand
-            // 
-            this.lblKontostand.AutoSize = true;
-            this.lblKontostand.Location = new System.Drawing.Point(930, 13);
-            this.lblKontostand.Name = "lblKontostand";
-            this.lblKontostand.Size = new System.Drawing.Size(64, 13);
-            this.lblKontostand.TabIndex = 17;
-            this.lblKontostand.Text = "Kontostand:";
-            // 
-            // lblKontostandWert
-            // 
-            this.lblKontostandWert.AutoSize = true;
-            this.lblKontostandWert.Location = new System.Drawing.Point(1000, 13);
-            this.lblKontostandWert.Name = "lblKontostandWert";
-            this.lblKontostandWert.Size = new System.Drawing.Size(16, 13);
-            this.lblKontostandWert.TabIndex = 18;
-            this.lblKontostandWert.Text = "...";
-            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -881,14 +856,12 @@
         private System.Windows.Forms.Button editEingangsrechnung;
         private System.Windows.Forms.Button addEingangsrechnung;
         private System.Windows.Forms.Button editAusgangsrechnung;
-        private System.Windows.Forms.Button addAusgangsrechnung;
         private System.Windows.Forms.Button editProjekt;
         private System.Windows.Forms.Button addProjekt;
         private System.Windows.Forms.Button editAngebot;
         private System.Windows.Forms.Button addAngebot;
         private System.Windows.Forms.Button deleteProjekt;
         private System.Windows.Forms.Button deleteEingangsrechnung;
-        private System.Windows.Forms.Button deleteAusgangsrechnung;
         private System.Windows.Forms.Button deleteAngebot;
         private System.Windows.Forms.Button AusgangsrechnungenPDF;
         private System.Windows.Forms.Button EingangsrechnungenPDF;

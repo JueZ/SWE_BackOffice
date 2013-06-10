@@ -36,11 +36,15 @@
             this.AusgangsrechnungDatum = new System.Windows.Forms.TextBox();
             this.Ausgangsrechnung_Summe = new System.Windows.Forms.TextBox();
             this.Ausgangsrechnung_Bezahlt = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Save_Ausgangsrechnung
             // 
-            this.Save_Ausgangsrechnung.Location = new System.Drawing.Point(197, 13);
+            this.Save_Ausgangsrechnung.Location = new System.Drawing.Point(193, 6);
             this.Save_Ausgangsrechnung.Name = "Save_Ausgangsrechnung";
             this.Save_Ausgangsrechnung.Size = new System.Drawing.Size(75, 23);
             this.Save_Ausgangsrechnung.TabIndex = 0;
@@ -50,7 +54,7 @@
             // 
             // Discard_Ausgangsrechnung
             // 
-            this.Discard_Ausgangsrechnung.Location = new System.Drawing.Point(196, 43);
+            this.Discard_Ausgangsrechnung.Location = new System.Drawing.Point(192, 36);
             this.Discard_Ausgangsrechnung.Name = "Discard_Ausgangsrechnung";
             this.Discard_Ausgangsrechnung.Size = new System.Drawing.Size(75, 23);
             this.Discard_Ausgangsrechnung.TabIndex = 1;
@@ -61,7 +65,7 @@
             // Ausgangsrechnung_Projekt
             // 
             this.Ausgangsrechnung_Projekt.Enabled = false;
-            this.Ausgangsrechnung_Projekt.Location = new System.Drawing.Point(13, 13);
+            this.Ausgangsrechnung_Projekt.Location = new System.Drawing.Point(86, 9);
             this.Ausgangsrechnung_Projekt.Name = "Ausgangsrechnung_Projekt";
             this.Ausgangsrechnung_Projekt.Size = new System.Drawing.Size(100, 20);
             this.Ausgangsrechnung_Projekt.TabIndex = 2;
@@ -69,14 +73,14 @@
             // Ausgangsrechnung_Kunde
             // 
             this.Ausgangsrechnung_Kunde.Enabled = false;
-            this.Ausgangsrechnung_Kunde.Location = new System.Drawing.Point(13, 40);
+            this.Ausgangsrechnung_Kunde.Location = new System.Drawing.Point(86, 36);
             this.Ausgangsrechnung_Kunde.Name = "Ausgangsrechnung_Kunde";
             this.Ausgangsrechnung_Kunde.Size = new System.Drawing.Size(100, 20);
             this.Ausgangsrechnung_Kunde.TabIndex = 3;
             // 
             // Ausgangsrechnung_AusgangsrechnungID
             // 
-            this.Ausgangsrechnung_AusgangsrechnungID.Location = new System.Drawing.Point(13, 141);
+            this.Ausgangsrechnung_AusgangsrechnungID.Location = new System.Drawing.Point(86, 137);
             this.Ausgangsrechnung_AusgangsrechnungID.Name = "Ausgangsrechnung_AusgangsrechnungID";
             this.Ausgangsrechnung_AusgangsrechnungID.Size = new System.Drawing.Size(100, 20);
             this.Ausgangsrechnung_AusgangsrechnungID.TabIndex = 4;
@@ -85,7 +89,7 @@
             // AusgangsrechnungDatum
             // 
             this.AusgangsrechnungDatum.Enabled = false;
-            this.AusgangsrechnungDatum.Location = new System.Drawing.Point(13, 66);
+            this.AusgangsrechnungDatum.Location = new System.Drawing.Point(86, 62);
             this.AusgangsrechnungDatum.Name = "AusgangsrechnungDatum";
             this.AusgangsrechnungDatum.Size = new System.Drawing.Size(100, 20);
             this.AusgangsrechnungDatum.TabIndex = 5;
@@ -93,7 +97,7 @@
             // Ausgangsrechnung_Summe
             // 
             this.Ausgangsrechnung_Summe.Enabled = false;
-            this.Ausgangsrechnung_Summe.Location = new System.Drawing.Point(13, 92);
+            this.Ausgangsrechnung_Summe.Location = new System.Drawing.Point(86, 88);
             this.Ausgangsrechnung_Summe.Name = "Ausgangsrechnung_Summe";
             this.Ausgangsrechnung_Summe.Size = new System.Drawing.Size(100, 20);
             this.Ausgangsrechnung_Summe.TabIndex = 6;
@@ -101,18 +105,58 @@
             // Ausgangsrechnung_Bezahlt
             // 
             this.Ausgangsrechnung_Bezahlt.AutoSize = true;
-            this.Ausgangsrechnung_Bezahlt.Location = new System.Drawing.Point(52, 118);
+            this.Ausgangsrechnung_Bezahlt.Location = new System.Drawing.Point(125, 114);
             this.Ausgangsrechnung_Bezahlt.Name = "Ausgangsrechnung_Bezahlt";
             this.Ausgangsrechnung_Bezahlt.Size = new System.Drawing.Size(61, 17);
             this.Ausgangsrechnung_Bezahlt.TabIndex = 7;
             this.Ausgangsrechnung_Bezahlt.Text = "Bezahlt";
             this.Ausgangsrechnung_Bezahlt.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Projekt";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Kunde";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Datum";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Summe";
+            // 
             // EditAusgangsrechnungenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(478, 262);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Ausgangsrechnung_Bezahlt);
             this.Controls.Add(this.Ausgangsrechnung_Summe);
             this.Controls.Add(this.AusgangsrechnungDatum);
@@ -138,5 +182,9 @@
         private System.Windows.Forms.TextBox AusgangsrechnungDatum;
         private System.Windows.Forms.TextBox Ausgangsrechnung_Summe;
         private System.Windows.Forms.CheckBox Ausgangsrechnung_Bezahlt;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
