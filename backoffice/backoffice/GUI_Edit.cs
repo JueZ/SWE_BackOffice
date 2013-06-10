@@ -15,7 +15,6 @@ namespace backoffice
         private EditProjektForm editProjektForm;
         private EditAusgangsrechnungenForm editAusgangsrechnungenForm;
         private EditEingangsrechnungenForm editEingangsrechnungenForm;
-        private EditZeiterfassungForm editZeiterfassungForm;
 
         //------------------------------------------------------------------------edit functions START----------------------------------------------------//
         private void edit_Click(object sender, EventArgs e)
@@ -170,27 +169,9 @@ namespace backoffice
                     }
                     break;
 
-                case "dataGridViewZeiterfassung":
-                case "editZeiterfassung":
 
-                    Zeiterfassung zeiterfassung = new Zeiterfassung();
 
-                    foreach (DataGridViewRow selRow in dataGridViewZeiterfassung.SelectedRows)
-                    {
-                        x = selRow.Index;
-                        zeiterfassung.ZeiterfassungID = Convert.ToInt32(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["ZeiterfassungID"].Index].Value.ToString());
-                        zeiterfassung.ProjektID = Convert.ToInt32(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["ProjektID"].Index].Value.ToString());
-                        zeiterfassung.Vorname = Convert.ToString(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["Vorname"].Index].Value.ToString());
-                        zeiterfassung.Nachname = Convert.ToString(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["Nachname"].Index].Value.ToString());
-                        zeiterfassung.Datum = Convert.ToDateTime(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["Datum"].Index].Value.ToString());
-                        zeiterfassung.Stunden = Convert.ToInt32(dataGridViewZeiterfassung.Rows[x].Cells[dataGridViewZeiterfassung.Columns["Stunden"].Index].Value.ToString());
 
-                        this.editZeiterfassungForm = new EditZeiterfassungForm(zeiterfassung, false);
-                        //on new editForm Close() the dataGridVIewKontakt will be refreshed
-                        editZeiterfassungForm.FormClosed += new FormClosedEventHandler(reloadOnFormClose);
-                        editZeiterfassungForm.Show();
-                    }
-                    break;
             }
 
          }
@@ -249,13 +230,7 @@ namespace backoffice
             editEingangsrechnungenForm.ShowDialog();
         }
 
-        private void addZeiterfassung_Click(object sender, EventArgs e)
-        {
-            Zeiterfassung k = new Zeiterfassung();
-            this.editZeiterfassungForm = new EditZeiterfassungForm(k, true);
-            editZeiterfassungForm.FormClosed += new FormClosedEventHandler(reloadOnFormClose);
-            editZeiterfassungForm.ShowDialog();
-        }
+
 
         //------------------------------------------------------------------------add functions END----------------------------------------------------//
 

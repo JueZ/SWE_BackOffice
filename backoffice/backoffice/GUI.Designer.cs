@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-            this.ZeiterfassungTab = new System.Windows.Forms.TabPage();
-            this.editZeiterfassung = new System.Windows.Forms.Button();
-            this.addZeiterfassung = new System.Windows.Forms.Button();
-            this.deleteZeiterfassung = new System.Windows.Forms.Button();
-            this.dataGridViewZeiterfassung = new System.Windows.Forms.DataGridView();
-            this.Zeiterfassung = new System.Windows.Forms.Button();
-            this.textBoxZeiterfassung = new System.Windows.Forms.TextBox();
+
             this.KontoTab = new System.Windows.Forms.TabPage();
             this.deleteKonto = new System.Windows.Forms.Button();
             this.editKonto = new System.Windows.Forms.Button();
@@ -94,8 +88,6 @@
             this.Kunde = new System.Windows.Forms.Button();
             this.textBoxKunde = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.ZeiterfassungTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZeiterfassung)).BeginInit();
             this.KontoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKonto)).BeginInit();
             this.Eingangsrechnungen.SuspendLayout();
@@ -112,81 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKunde)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ZeiterfassungTab
-            // 
-            this.ZeiterfassungTab.BackColor = System.Drawing.Color.Wheat;
-            this.ZeiterfassungTab.Controls.Add(this.editZeiterfassung);
-            this.ZeiterfassungTab.Controls.Add(this.addZeiterfassung);
-            this.ZeiterfassungTab.Controls.Add(this.deleteZeiterfassung);
-            this.ZeiterfassungTab.Controls.Add(this.dataGridViewZeiterfassung);
-            this.ZeiterfassungTab.Controls.Add(this.Zeiterfassung);
-            this.ZeiterfassungTab.Controls.Add(this.textBoxZeiterfassung);
-            this.ZeiterfassungTab.Location = new System.Drawing.Point(4, 22);
-            this.ZeiterfassungTab.Name = "ZeiterfassungTab";
-            this.ZeiterfassungTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ZeiterfassungTab.Size = new System.Drawing.Size(1138, 553);
-            this.ZeiterfassungTab.TabIndex = 7;
-            this.ZeiterfassungTab.Text = "Zeiterfassungen";
-            // 
-            // editZeiterfassung
-            // 
-            this.editZeiterfassung.Location = new System.Drawing.Point(993, 5);
-            this.editZeiterfassung.Name = "editZeiterfassung";
-            this.editZeiterfassung.Size = new System.Drawing.Size(134, 34);
-            this.editZeiterfassung.TabIndex = 17;
-            this.editZeiterfassung.Text = "Zeiterfassung bearbeiten";
-            this.editZeiterfassung.UseVisualStyleBackColor = true;
-            this.editZeiterfassung.Click += new System.EventHandler(this.edit_Click);
-            // 
-            // addZeiterfassung
-            // 
-            this.addZeiterfassung.Location = new System.Drawing.Point(827, 7);
-            this.addZeiterfassung.Name = "addZeiterfassung";
-            this.addZeiterfassung.Size = new System.Drawing.Size(138, 32);
-            this.addZeiterfassung.TabIndex = 16;
-            this.addZeiterfassung.Text = "Zeiterfassung hinzufügen";
-            this.addZeiterfassung.UseVisualStyleBackColor = true;
-            this.addZeiterfassung.Click += new System.EventHandler(this.addZeiterfassung_Click);
-            // 
-            // deleteZeiterfassung
-            // 
-            this.deleteZeiterfassung.Location = new System.Drawing.Point(679, 5);
-            this.deleteZeiterfassung.Name = "deleteZeiterfassung";
-            this.deleteZeiterfassung.Size = new System.Drawing.Size(141, 35);
-            this.deleteZeiterfassung.TabIndex = 15;
-            this.deleteZeiterfassung.Text = "Ausgewählte Zeiterfassungen löschen";
-            this.deleteZeiterfassung.UseVisualStyleBackColor = true;
-            this.deleteZeiterfassung.Click += new System.EventHandler(this.deleteZeiterfassung_Click);
-            // 
-            // dataGridViewZeiterfassung
-            // 
-            this.dataGridViewZeiterfassung.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewZeiterfassung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewZeiterfassung.Location = new System.Drawing.Point(6, 45);
-            this.dataGridViewZeiterfassung.Name = "dataGridViewZeiterfassung";
-            this.dataGridViewZeiterfassung.ReadOnly = true;
-            this.dataGridViewZeiterfassung.Size = new System.Drawing.Size(1121, 473);
-            this.dataGridViewZeiterfassung.TabIndex = 3;
-            // 
-            // Zeiterfassung
-            // 
-            this.Zeiterfassung.BackColor = System.Drawing.Color.Transparent;
-            this.Zeiterfassung.Location = new System.Drawing.Point(413, 6);
-            this.Zeiterfassung.Name = "Zeiterfassung";
-            this.Zeiterfassung.Size = new System.Drawing.Size(117, 33);
-            this.Zeiterfassung.TabIndex = 2;
-            this.Zeiterfassung.Text = "Zeiterfassung suchen";
-            this.Zeiterfassung.UseVisualStyleBackColor = false;
-            this.Zeiterfassung.Click += new System.EventHandler(this.Search_Click);
-            // 
-            // textBoxZeiterfassung
-            // 
-            this.textBoxZeiterfassung.Location = new System.Drawing.Point(6, 13);
-            this.textBoxZeiterfassung.Name = "textBoxZeiterfassung";
-            this.textBoxZeiterfassung.Size = new System.Drawing.Size(401, 20);
-            this.textBoxZeiterfassung.TabIndex = 1;
-            this.textBoxZeiterfassung.KeyDown += new System.Windows.Forms.KeyEventHandler(this.checkEnter);
+    
+      
             // 
             // KontoTab
             // 
@@ -818,7 +737,6 @@
             this.tabControl1.Controls.Add(this.Ausgangsrechnungen);
             this.tabControl1.Controls.Add(this.Eingangsrechnungen);
             this.tabControl1.Controls.Add(this.KontoTab);
-            this.tabControl1.Controls.Add(this.ZeiterfassungTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -836,9 +754,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI";
             this.Text = "EPU";
-            this.ZeiterfassungTab.ResumeLayout(false);
-            this.ZeiterfassungTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZeiterfassung)).EndInit();
             this.KontoTab.ResumeLayout(false);
             this.KontoTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKonto)).EndInit();
@@ -867,10 +782,6 @@
 
         #endregion
         
-        private System.Windows.Forms.TabPage ZeiterfassungTab;
-        private System.Windows.Forms.DataGridView dataGridViewZeiterfassung;
-        private System.Windows.Forms.Button Zeiterfassung;
-        private System.Windows.Forms.TextBox textBoxZeiterfassung;
         private System.Windows.Forms.TabPage KontoTab;
         private System.Windows.Forms.DataGridView dataGridViewKonto;
         private System.Windows.Forms.Button Konto;
@@ -925,13 +836,10 @@
         private System.Windows.Forms.Button editAngebot;
         private System.Windows.Forms.Button addAngebot;
         private System.Windows.Forms.Button deleteProjekt;
-        private System.Windows.Forms.Button deleteZeiterfassung;
         private System.Windows.Forms.Button deleteKonto;
         private System.Windows.Forms.Button deleteEingangsrechnung;
         private System.Windows.Forms.Button deleteAusgangsrechnung;
         private System.Windows.Forms.Button deleteAngebot;
-        private System.Windows.Forms.Button addZeiterfassung;
-        private System.Windows.Forms.Button editZeiterfassung;
 
     }
 }

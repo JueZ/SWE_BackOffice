@@ -37,9 +37,7 @@ namespace backoffice
                 case "Konto":
                     textBox = textBoxKonto.Text;
                     break;
-                case "Zeiterfassung":
-                    textBox = textBoxZeiterfassung.Text;
-                    break;
+       
             }
             if (textBox.Trim() == String.Empty)
             {
@@ -102,11 +100,7 @@ namespace backoffice
                     dataGridViewKonto.DataSource = kontoliste;
                     dataGridViewKonto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     break;
-                case "Zeiterfassung":
-                    List<Zeiterfassung> zeitliste = liste.Cast<Zeiterfassung>().ToList();
-                    dataGridViewZeiterfassung.DataSource = zeitliste;
-                    dataGridViewZeiterfassung.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    break;
+   
             }
         }
     }

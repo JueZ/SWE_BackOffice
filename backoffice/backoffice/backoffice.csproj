@@ -62,12 +62,6 @@
     <Compile Include="EditEingangsrechnungenForm.Designer.cs">
       <DependentUpon>EditEingangsrechnungenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditZeiterfassungForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditZeiterfassungForm.Designer.cs">
-      <DependentUpon>EditZeiterfassungForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Angebot.cs" />
     <Compile Include="GUI_Delete.cs">
       <SubType>Form</SubType>
@@ -106,7 +100,6 @@
     <Compile Include="Entities\Kunde.cs" />
     <Compile Include="Entities\Projekt.cs" />
     <Compile Include="Entities\EntityInterface.cs" />
-    <Compile Include="Entities\Zeiterfassung.cs" />
     <EmbeddedResource Include="confirmBox.resx">
       <DependentUpon>confirmBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,9 +120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditProjektForm.resx">
       <DependentUpon>EditProjektForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditZeiterfassungForm.resx">
-      <DependentUpon>EditZeiterfassungForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>

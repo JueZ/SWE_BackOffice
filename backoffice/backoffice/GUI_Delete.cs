@@ -45,10 +45,7 @@ namespace backoffice
             delete("Konto");
         }
 
-        private void deleteZeiterfassung_Click(object sender, EventArgs e)
-        {
-            delete("Zeiterfassung");
-        }   
+
 
         private void delete(string entity)
         {
@@ -150,22 +147,11 @@ namespace backoffice
                     Ausgangsrechnung.PerformClick();
                 }
             }
-            else if (entity == "Zeiterfassung")
-            {
-                foreach (DataGridViewRow selRow in dataGridViewZeiterfassung.SelectedRows)
-                {
-                    Zeiterfassung zeiterfassung = new Zeiterfassung();
-                    zeiterfassung.ZeiterfassungID = Convert.ToInt32(dataGridViewZeiterfassung.Rows[selRow.Index].Cells[dataGridViewZeiterfassung.Columns["ZeiterfassungID"].Index].Value.ToString());
-                    liste.Add(zeiterfassung);
-                }
 
 
-                if (MessageBox.Show(dataGridViewZeiterfassung.SelectedRows.Count + " Datensätze werden unwiderruflich gelöscht!\n", "Datensätze löschen", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    myRequest.delete(liste, entity);
-                    Zeiterfassung.PerformClick();
-                }
-            }
+
+
+            
         }
 
         //------------------------------------------------------------------------delete functions END----------------------------------------------------//

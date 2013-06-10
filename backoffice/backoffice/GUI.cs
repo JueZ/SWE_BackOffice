@@ -56,9 +56,7 @@ namespace backoffice
                     case "textBoxKonto":
                         Konto.PerformClick();
                         break;
-                    case "textBoxZeiterfassung":
-                        Zeiterfassung.PerformClick();
-                        break;
+ 
                 }
             }
         }
@@ -96,10 +94,7 @@ namespace backoffice
             {
                 Konto.PerformClick();
             }
-            else if (sender.ToString().Contains("Zeiterfassung"))
-            {
-                Zeiterfassung.PerformClick();
-            }
+
             
            
         }

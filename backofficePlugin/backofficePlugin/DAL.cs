@@ -50,9 +50,7 @@ namespace backofficePlugin
                         case "Konto":
                             sqlQuery = "SELECT * FROM dbo." + from;
                             break;
-                        case "Zeiterfassung":
-                            sqlQuery = "SELECT * FROM dbo." + from;
-                            break;
+                    
                     }
                 else
                 {
@@ -79,9 +77,7 @@ namespace backofficePlugin
                         case "Konto":
                             sqlQuery = "SELECT * from dbo." + from + "WHERE Name @param";
                             break;
-                        case "Zeiterfassung":
-                            sqlQuery = "SELECT * from dbo." + from;
-                            break;
+                        
                     }
                     
                 }
@@ -222,20 +218,7 @@ namespace backofficePlugin
                             liste.Add(k);
                         }
                         break;
-                    case "Zeiterfassung":
-                        foreach (DataRow reihe in dataTable.Rows)
-                        {
-                            Zeiterfassung k = new Zeiterfassung();
-
-                            k.ZeiterfassungID = Convert.ToInt32(reihe["ZeiterfassungID"]);
-                            k.ProjektID = Convert.ToInt32(reihe["ProjektID"]);
-                            k.Vorname = Convert.ToString(reihe["Vorname"]);
-                            k.Nachname = Convert.ToString(reihe["Nachname"]);
-                            k.Datum = Convert.ToDateTime(reihe["Datum"]);
-                            k.Stunden = Convert.ToInt32(reihe["Stunden"]);
-                            liste.Add(k);
-                        }
-                        break;
+  
                 }
 
 
@@ -369,23 +352,7 @@ namespace backofficePlugin
                         break;
 
 
-                    case "Zeiterfassung":
-                        foreach (Zeiterfassung a in liste)
-                        {
-                            sqlQuery = "UPDATE dbo.Zeiterfassung SET ";
-                            sqlQuery += "ProjektID = '" + a.ProjektID.ToString() + "',";
-                            sqlQuery += "Vorname = '" + a.Vorname.ToString() + "',";
-                            sqlQuery += "Nachname = '" + a.Nachname.ToString() + "',";
-                            sqlQuery += "Datum = '" + a.Datum.ToString() + "',";
-                            sqlQuery += "Stunden = '" + a.Stunden.ToString() + "'";
-                            sqlQuery += "WHERE ZeiterfassungID = '" + a.ZeiterfassungID.ToString() + "';";
-                            sqlCmd.CommandText = sqlQuery;
-                            Console.WriteLine(sqlQuery);
-                            x += sqlCmd.ExecuteNonQuery();
 
-                        }
-
-                        break;
             }
                 sqlCon.Close();
 
@@ -556,22 +523,7 @@ namespace backofficePlugin
                                     a += sqlCmd.ExecuteNonQuery();
                                 }
                                 break;
-                    case "Zeiterfassung":
-                                foreach (Zeiterfassung k in liste)
-                                {
-                                    sqlQuery = "INSERT INTO dbo.Zeiterfassung ";
-                                    sqlQuery += "([ProjektID], [Vorname], [Nachname], [Datum], [Stunden]) VALUES (";
-                                    sqlQuery += "'" + k.ProjektID.ToString() + "',";
-                                    sqlQuery += "'" + k.Vorname.ToString() + "',";
-                                    sqlQuery += "'" + k.Nachname.ToString() + "',";
-                                    sqlQuery += "'" + k.Datum.ToString() + "',";
-                                    sqlQuery += "'" + k.Stunden.ToString() + "')";
 
-
-                                    sqlCmd.CommandText = sqlQuery;
-                                    a += sqlCmd.ExecuteNonQuery();
-                                }
-                                break;
             }
                 sqlCon.Close();
 
@@ -662,16 +614,7 @@ namespace backofficePlugin
                             a += sqlCmd.ExecuteNonQuery();
                         }
                         break;
-                    case "Zeiterfassung":
-                        foreach (Zeiterfassung k in liste)
-                        {
-                            sqlQuery = "DELETE FROM dbo.Zeiterfassung ";
-                            sqlQuery += "WHERE ZeiterfassungID = '" + k.ZeiterfassungID.ToString() + "';";
 
-                            sqlCmd.CommandText = sqlQuery;
-                            a += sqlCmd.ExecuteNonQuery();
-                        }
-                        break;
                 }
                 sqlCon.Close();
 
