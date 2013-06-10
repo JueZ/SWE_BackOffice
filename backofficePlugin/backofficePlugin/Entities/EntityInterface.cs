@@ -13,7 +13,6 @@ namespace backofficePlugin
     [XmlInclude(typeof(Konto))]
     [XmlInclude(typeof(Ausgangsrechnung))]
     [XmlInclude(typeof(Eingangsrechnung))]
-    [XmlInclude(typeof(Zeiterfassung))]
     public abstract class EntityInterface
     {
         

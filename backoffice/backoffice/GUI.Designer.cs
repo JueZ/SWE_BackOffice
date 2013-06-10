@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI));
-
             this.KontoTab = new System.Windows.Forms.TabPage();
             this.deleteKonto = new System.Windows.Forms.Button();
             this.editKonto = new System.Windows.Forms.Button();
-            this.addKonto = new System.Windows.Forms.Button();
             this.dataGridViewKonto = new System.Windows.Forms.DataGridView();
             this.Konto = new System.Windows.Forms.Button();
             this.textBoxKonto = new System.Windows.Forms.TextBox();
@@ -46,6 +44,7 @@
             this.Eingangsrechnung = new System.Windows.Forms.Button();
             this.textBoxEingangsrechnung = new System.Windows.Forms.TextBox();
             this.Ausgangsrechnungen = new System.Windows.Forms.TabPage();
+            this.AusgangsrechnungenPDF = new System.Windows.Forms.Button();
             this.deleteAusgangsrechnung = new System.Windows.Forms.Button();
             this.editAusgangsrechnung = new System.Windows.Forms.Button();
             this.addAusgangsrechnung = new System.Windows.Forms.Button();
@@ -104,15 +103,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKunde)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
-    
-      
             // 
             // KontoTab
             // 
             this.KontoTab.BackColor = System.Drawing.Color.Wheat;
             this.KontoTab.Controls.Add(this.deleteKonto);
             this.KontoTab.Controls.Add(this.editKonto);
-            this.KontoTab.Controls.Add(this.addKonto);
             this.KontoTab.Controls.Add(this.dataGridViewKonto);
             this.KontoTab.Controls.Add(this.Konto);
             this.KontoTab.Controls.Add(this.textBoxKonto);
@@ -263,6 +259,7 @@
             // Ausgangsrechnungen
             // 
             this.Ausgangsrechnungen.BackColor = System.Drawing.Color.Wheat;
+            this.Ausgangsrechnungen.Controls.Add(this.AusgangsrechnungenPDF);
             this.Ausgangsrechnungen.Controls.Add(this.deleteAusgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.editAusgangsrechnung);
             this.Ausgangsrechnungen.Controls.Add(this.addAusgangsrechnung);
@@ -276,6 +273,16 @@
             this.Ausgangsrechnungen.Size = new System.Drawing.Size(1138, 553);
             this.Ausgangsrechnungen.TabIndex = 4;
             this.Ausgangsrechnungen.Text = "Ausgangsrechnungen";
+            // 
+            // AusgangsrechnungenPDF
+            // 
+            this.AusgangsrechnungenPDF.Location = new System.Drawing.Point(571, 13);
+            this.AusgangsrechnungenPDF.Name = "AusgangsrechnungenPDF";
+            this.AusgangsrechnungenPDF.Size = new System.Drawing.Size(107, 23);
+            this.AusgangsrechnungenPDF.TabIndex = 13;
+            this.AusgangsrechnungenPDF.Text = "als PDF exportieren";
+            this.AusgangsrechnungenPDF.UseVisualStyleBackColor = true;
+            this.AusgangsrechnungenPDF.Click += new System.EventHandler(this.AusgangsrechnungenPDF_Click);
             // 
             // deleteAusgangsrechnung
             // 
@@ -826,7 +833,6 @@
         private System.Windows.Forms.TextBox Result_Ausgangsrechnung;
         private System.Windows.Forms.TextBox Result_Eingangsrechnung;
         private System.Windows.Forms.Button editKonto;
-        private System.Windows.Forms.Button addKonto;
         private System.Windows.Forms.Button editEingangsrechnung;
         private System.Windows.Forms.Button addEingangsrechnung;
         private System.Windows.Forms.Button editAusgangsrechnung;
@@ -840,6 +846,7 @@
         private System.Windows.Forms.Button deleteEingangsrechnung;
         private System.Windows.Forms.Button deleteAusgangsrechnung;
         private System.Windows.Forms.Button deleteAngebot;
+        private System.Windows.Forms.Button AusgangsrechnungenPDF;
 
     }
 }

@@ -33,7 +33,7 @@ namespace backoffice
             Stream dataStream = response.GetResponseStream();
             // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(dataStream, System.Text.Encoding.UTF8);
-
+            
             kundenliste = (List<EntityInterface>)new XmlSerializer(typeof(List<EntityInterface>)).Deserialize(reader);
             // Cleanup the streams and the response.
             reader.Close();

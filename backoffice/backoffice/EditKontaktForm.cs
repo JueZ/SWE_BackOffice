@@ -63,27 +63,24 @@ namespace backoffice
             else
             {
                 Kontakt_ID.Text = k.KontaktID.ToString();
-                this.Text = "Bearbeiten von Kontakt \"" + k.Vorname + " " + k.Nachname +"\"";
-            }
-            
-            Kontakt_Firma.Text = k.Firma;
-            Kontakt_Anrede.Text = k.Anrede;
-            Kontakt_Vorname.Text = k.Vorname;
-            Kontakt_Nachname.Text = k.Nachname;
-            Kontakt_Firmenbuchnummer.Text = k.Firmenbuchnummer;
-            Kontakt_UID.Text = k.UID;
-            Kontakt_Telefonnummer.Text = k.Telefonnummer;
-            Kontakt_Land.Text = k.Land;
-            Kontakt_PLZ.Text = k.PLZ;
-            Kontakt_Strasse.Text = k.Strasse;
-            Kontakt_HNr.Text = k.HNr;
-            Kontakt_Kontonummer.Text = k.Kontonummer;
-            Kontakt_BLZ.Text = k.BLZ;
-            Kontakt_IBAN.Text = k.IBAN;
-            Kontakt_BIC.Text = k.BIC;
-            
+                this.Text = "Kontakt bearbeiten";
 
-            
+                Kontakt_Firma.Text = k.Firma;
+                Kontakt_Anrede.Text = k.Anrede;
+                Kontakt_Vorname.Text = k.Vorname;
+                Kontakt_Nachname.Text = k.Nachname;
+                Kontakt_Firmenbuchnummer.Text = k.Firmenbuchnummer;
+                Kontakt_UID.Text = k.UID;
+                Kontakt_Telefonnummer.Text = k.Telefonnummer;
+                Kontakt_Land.Text = k.Land;
+                Kontakt_PLZ.Text = k.PLZ;
+                Kontakt_Strasse.Text = k.Strasse;
+                Kontakt_HNr.Text = k.HNr;
+                Kontakt_Kontonummer.Text = k.Kontonummer;
+                Kontakt_BLZ.Text = k.BLZ;
+                Kontakt_IBAN.Text = k.IBAN;
+                Kontakt_BIC.Text = k.BIC;
+            }
         }
 
 

@@ -63,27 +63,24 @@ namespace backoffice
             else
             {
                 Kunde_KundeID.Text = k.KundeID.ToString();
-                this.Text = "Bearbeiten von Kunde \"" + k.Vorname + " " + k.Nachname +"\"";
-            }
-            
-            Kunde_Firma.Text = k.Firma;
-            Kunde_Anrede.Text = k.Anrede;
-            Kunde_Vorname.Text = k.Vorname;
-            Kunde_Nachname.Text = k.Nachname;
-            Kunde_Firmenbuchnummer.Text = k.Firmenbuchnummer;
-            Kunde_UID.Text = k.UID;
-            Kunde_Telefonnummer.Text = k.Telefonnummer;
-            Kunde_Land.Text = k.Land;
-            Kunde_PLZ.Text = k.PLZ;
-            Kunde_Strasse.Text = k.Strasse;
-            Kunde_HNr.Text = k.HNr;
-            Kunde_Kontonummer.Text = k.Kontonummer;
-            Kunde_BLZ.Text = k.BLZ;
-            Kunde_IBAN.Text = k.IBAN;
-            Kunde_BIC.Text = k.BIC;
-            
+                this.Text = "Kunde bearbeiten";
 
-            
+                Kunde_Firma.Text = k.Firma;
+                Kunde_Anrede.Text = k.Anrede;
+                Kunde_Vorname.Text = k.Vorname;
+                Kunde_Nachname.Text = k.Nachname;
+                Kunde_Firmenbuchnummer.Text = k.Firmenbuchnummer;
+                Kunde_UID.Text = k.UID;
+                Kunde_Telefonnummer.Text = k.Telefonnummer;
+                Kunde_Land.Text = k.Land;
+                Kunde_PLZ.Text = k.PLZ;
+                Kunde_Strasse.Text = k.Strasse;
+                Kunde_HNr.Text = k.HNr;
+                Kunde_Kontonummer.Text = k.Kontonummer;
+                Kunde_BLZ.Text = k.BLZ;
+                Kunde_IBAN.Text = k.IBAN;
+                Kunde_BIC.Text = k.BIC;
+            }
         }
 
 

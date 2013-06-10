@@ -18,6 +18,15 @@ namespace backoffice
 
             Ausgangsrechnung_AusgangsrechnungID.Text = a.AusgangsrechnungID.ToString();
             this.Text = "Ausgangsrechnung bearbeiten";
+
+            Ausgangsrechnung_Kunde.Text = a.Kunde;
+            Ausgangsrechnung_Projekt.Text = a.Projekt;
+            Ausgangsrechnung_Summe.Text = a.Summe.ToString();
+            AusgangsrechnungDatum.Text = a.Datum.ToString();
+            if (a.Bezahlt == "ja")
+                Ausgangsrechnung_Bezahlt.Checked = true;
+            else
+                Ausgangsrechnung_Bezahlt.Checked = false;
         }
 
         private void Discard_Ausgangsrechnung_Click(object sender, EventArgs e)
@@ -33,8 +42,14 @@ namespace backoffice
 
             Ausgangsrechnung a = new Ausgangsrechnung();
 
-
-            a.Bezahlt = Convert.ToBoolean(Ausgangsrechnung_Bezahlt.Checked);
+            if (Ausgangsrechnung_Bezahlt.Checked)
+            {
+                a.Bezahlt = "ja";
+            }
+            else
+            {
+                a.Bezahlt = "nein";
+            }
 
                 a.AusgangsrechnungID = Convert.ToInt32(Ausgangsrechnung_AusgangsrechnungID.Text);
                 ausgangsrechnungListe.Add(a);

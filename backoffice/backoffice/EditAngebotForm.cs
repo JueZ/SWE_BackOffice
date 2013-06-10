@@ -20,7 +20,6 @@ namespace backoffice
         private Button Save_Angebot;
         private TextBox Angebot_FK_ProjektID;
         private TextBox Angebot_FK_KundeID;
-        private TextBox Angebot_FK_AusgangsrechnungID;
         private TextBox Angebot_Dauer;
         private TextBox Angebot_Angebotssumme;
         private TextBox Angebot_Angebotsname;
@@ -42,6 +41,15 @@ namespace backoffice
             {
                 Angebot_AngebotID.Text = a.AngebotID.ToString();
                 this.Text = "Angebot bearbeiten";
+
+                Angebot_FK_ProjektID.Text = a.FK_ProjektID.ToString();
+                Angebot_FK_KundeID.Text = a.FK_KundeID.ToString();
+                Angebot_Dauer.Text = a.Dauer.ToString();
+                Angebot_Angebotssumme.Text = a.Angebotssumme.ToString();
+                Angebot_Angebotsname.Text = a.Angebotsname;
+                Angebot_AngebotID.Text = a.AngebotID.ToString();
+                Angebot_UmsetzungsChance.Text = a.UmsetzungsChance.ToString();
+                Angebot_Datum.Text = a.Datum.ToString();
             }
         }
 
@@ -61,7 +69,6 @@ namespace backoffice
 
             a.FK_ProjektID = Convert.ToInt32(Angebot_FK_ProjektID.Text);
             a.FK_KundeID = Convert.ToInt32(Angebot_FK_KundeID.Text);
-            a.FK_AusgangsrechnungID = Convert.ToInt32(Angebot_FK_AusgangsrechnungID.Text);
             a.Angebotsname = Convert.ToString(Angebot_Angebotsname.Text);
             a.Angebotssumme = Convert.ToInt32(Angebot_Angebotssumme.Text);
             a.Dauer = Convert.ToInt32(Angebot_Dauer.Text);
@@ -96,7 +103,6 @@ namespace backoffice
             this.Discard_Angebot = new System.Windows.Forms.Button();
             this.Angebot_FK_ProjektID = new System.Windows.Forms.TextBox();
             this.Angebot_FK_KundeID = new System.Windows.Forms.TextBox();
-            this.Angebot_FK_AusgangsrechnungID = new System.Windows.Forms.TextBox();
             this.Angebot_Dauer = new System.Windows.Forms.TextBox();
             this.Angebot_Angebotssumme = new System.Windows.Forms.TextBox();
             this.Angebot_Angebotsname = new System.Windows.Forms.TextBox();
@@ -138,13 +144,6 @@ namespace backoffice
             this.Angebot_FK_KundeID.Name = "Angebot_FK_KundeID";
             this.Angebot_FK_KundeID.Size = new System.Drawing.Size(100, 20);
             this.Angebot_FK_KundeID.TabIndex = 3;
-            // 
-            // Angebot_FK_AusgangsrechnungID
-            // 
-            this.Angebot_FK_AusgangsrechnungID.Location = new System.Drawing.Point(12, 66);
-            this.Angebot_FK_AusgangsrechnungID.Name = "Angebot_FK_AusgangsrechnungID";
-            this.Angebot_FK_AusgangsrechnungID.Size = new System.Drawing.Size(100, 20);
-            this.Angebot_FK_AusgangsrechnungID.TabIndex = 4;
             // 
             // Angebot_Dauer
             // 
@@ -198,7 +197,6 @@ namespace backoffice
             this.Controls.Add(this.Angebot_Dauer);
             this.Controls.Add(this.Angebot_Angebotssumme);
             this.Controls.Add(this.Angebot_Angebotsname);
-            this.Controls.Add(this.Angebot_FK_AusgangsrechnungID);
             this.Controls.Add(this.Angebot_FK_KundeID);
             this.Controls.Add(this.Angebot_FK_ProjektID);
             this.Controls.Add(this.Discard_Angebot);

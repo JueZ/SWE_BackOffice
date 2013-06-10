@@ -12,9 +12,17 @@ namespace backoffice
 {
     public partial class EditEingangsrechnungenForm : Form
     {
+        //private TextBox Eingangsrechnung_FK_KontaktID;
+        //private TextBox Eingangsrechnung_Summe;
+        //private TextBox Eingangsrechnung_Datum;
+        //private TextBox Eingangsrechnung_Beschreibung;
+        //private CheckBox Eingangsrechnung_Bezahlt;
+
         public EditEingangsrechnungenForm(Eingangsrechnung a, bool newEingangsrechnung)
         {
             InitializeComponent();
+
+            
 
             if (newEingangsrechnung)
             {
@@ -25,7 +33,17 @@ namespace backoffice
             {
                 Eingangsrechnung_EingangsrechnungID.Text = a.EingangsrechnungID.ToString();
                 this.Text = "Eingangsrechnung bearbeiten";
+
+                Eingangsrechnung_FK_KontaktID.Text = a.FK_KontaktID.ToString();
+                Eingangsrechnung_Beschreibung.Text = a.Beschreibung;
+                Eingangsrechnung_Datum.Text = a.Datum.ToString();
+                Eingangsrechnung_Summe.Text = a.Summe.ToString();
+                if (a.Bezahlt == "ja")
+                    Eingangsrechnung_Bezahlt.Checked = true;
+                else
+                    Eingangsrechnung_Bezahlt.Checked = false;
             }
+
         }
 
         private void Discard_Eingangsrechnung_Click(object sender, EventArgs e)
@@ -43,6 +61,18 @@ namespace backoffice
 
 
             a.FK_KontaktID = Convert.ToInt32(Eingangsrechnung_FK_KontaktID.Text);
+            a.Summe = Convert.ToInt32(Eingangsrechnung_FK_KontaktID.Text);
+            a.Datum = Convert.ToDateTime(Eingangsrechnung_Datum.Text);
+            a.Beschreibung = Convert.ToString(Eingangsrechnung_Beschreibung.Text);
+            if (Eingangsrechnung_Bezahlt.Checked)
+            {
+                a.Bezahlt = "ja";
+            }
+            else
+            {
+                a.Bezahlt = "nein";
+            }
+
 
             if (Eingangsrechnung_EingangsrechnungID.Text == "none")
             {

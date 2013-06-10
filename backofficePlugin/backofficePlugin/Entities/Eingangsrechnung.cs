@@ -13,7 +13,7 @@ namespace backofficePlugin
         private string _Beschreibung;
         private DateTime _Datum;
         private float _Summe;
-        private bool _Bezahlt;
+        private string _Bezahlt;
 
 
         public int EingangsrechnungID { get { return _EingangsrechnungID; } set { _EingangsrechnungID = value; } }
@@ -22,6 +22,6 @@ namespace backofficePlugin
         public string Beschreibung { get { return _Beschreibung; } set { _Beschreibung = value; } }
         public DateTime Datum { get { return _Datum; } set { _Datum = value; } }
         public float Summe { get { return _Summe; } set { _Summe = value; } }
-        public bool Bezahlt { get { return _Bezahlt; } set { _Bezahlt = value; } }
+        public string Bezahlt { get { return _Bezahlt; } set { _Bezahlt = value; } }
     }
 }

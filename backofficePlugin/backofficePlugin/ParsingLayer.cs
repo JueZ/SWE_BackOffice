@@ -81,11 +81,12 @@ namespace backofficePlugin
                     //kundenliste.WriteXml(sw);
                     XmlSerializer myserializer = new XmlSerializer(typeof(List<EntityInterface>));
                     xmlData = myserializer.ToString();
+
                     
                     var stringwriter = new System.IO.StringWriter();
                     //var serializer = new XmlSerializer(this.GetType());
                     myserializer.Serialize(stringwriter, liste);
-                    //Console.WriteLine(stringwriter.ToString());
+                    Console.WriteLine(stringwriter.ToString());
 
                     byte[] requestBytes = System.Text.Encoding.UTF8.GetBytes(stringwriter.ToString());
                     long count = requestBytes.Length;

@@ -11,7 +11,7 @@ namespace backoffice
     [XmlInclude(typeof(Angebot))]
     [XmlInclude(typeof(Projekt))]
     [XmlInclude(typeof(Konto))]
-    [XmlInclude(typeof(Eingangsrechnung))]
+    [XmlInclude(typeof(Ausgangsrechnung))]
     [XmlInclude(typeof(Eingangsrechnung))]
     public abstract class EntityInterface
     {

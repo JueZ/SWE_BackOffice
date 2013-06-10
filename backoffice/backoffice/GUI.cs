@@ -11,6 +11,9 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
+using iTextSharp;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace backoffice
 {
@@ -118,5 +121,39 @@ namespace backoffice
             dataGridViewEingangsrechnung.DataSource = rechnungliste;
             dataGridViewEingangsrechnung.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+
+        private void AusgangsrechnungenPDF_Click(object sender, EventArgs e)
+        {
+            string pdfString = "";
+            Document pdfDoc = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new System.IO.FileStream(System.IO.Directory.GetCurrentDirectory() + "\\exportAusgangsrechnungen.pdf",
+               System.IO.FileMode.Create));
+
+            pdfDoc.Open();
+
+            foreach (DataGridViewRow row in dataGridViewAusgangsrechnung.SelectedRows)
+            {
+               
+                foreach(DataGridViewCell cell in row.Cells)
+                {
+                    
+                    pdfString += cell.Value.ToString() + " ";
+                }
+                pdfDoc.Add(new Paragraph (pdfString));
+                pdfString = "";
+
+            }
+
+            
+            
+            PdfContentByte cb = writer.DirectContent;
+            cb.MoveTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height);
+            cb.LineTo(pdfDoc.PageSize.Width / 2, pdfDoc.PageSize.Height);
+            cb.Stroke();
+
+            pdfDoc.Close(); 
+        }
+
+
     }
 }

@@ -49,7 +49,6 @@
     <Compile Include="Entities\Eingangsrechnung.cs" />
     <Compile Include="Entities\Konto.cs" />
     <Compile Include="Entities\Projekt.cs" />
-    <Compile Include="Entities\Zeiterfassung.cs" />
     <Compile Include="ParsingLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Kontakt.cs" />

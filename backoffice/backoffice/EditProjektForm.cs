@@ -20,8 +20,9 @@ namespace backoffice
         private Button Save_Projekt;
         private GroupBox groupBox1;
         private Label label1;
-        private TextBox Projket_Name;
+        private TextBox Projekt_Name;
         private TextBox Projekt_ProjektID;
+        private TextBox Projekt_Datum;
         private Button Discard_Projekt;
 
 
@@ -36,11 +37,12 @@ namespace backoffice
             }
             else
             {
-                this.Text = "Bearbeiten von Projekt \"" + a.Name + "\"";
+                this.Text = "Projekt bearbeiten";
+
+                Projekt_Name.Text = a.Name;
                 Projekt_ProjektID.Text = a.ProjektID.ToString();
-                Projket_Name.Text = a.Name.ToString();
+                Projekt_Datum.Text = a.Datum.ToString();
             }
-            
         }
 
 
@@ -59,7 +61,8 @@ namespace backoffice
             Projekt a = new Projekt();
 
            
-            a.Name = Convert.ToString(Projket_Name.Text);
+            a.Name = Convert.ToString(Projekt_Name.Text);
+            a.Datum = Convert.ToDateTime(Projekt_Datum.Text);
 
             if (Projekt_ProjektID.Text == "none")
             {
@@ -97,8 +100,9 @@ namespace backoffice
             this.Discard_Projekt = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Projekt_ProjektID = new System.Windows.Forms.TextBox();
-            this.Projket_Name = new System.Windows.Forms.TextBox();
+            this.Projekt_Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Projekt_Datum = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,30 +128,30 @@ namespace backoffice
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Projekt_ProjektID);
-            this.groupBox1.Controls.Add(this.Projket_Name);
+            this.groupBox1.Controls.Add(this.Projekt_Datum);
+            this.groupBox1.Controls.Add(this.Projekt_Name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(458, 76);
+            this.groupBox1.Size = new System.Drawing.Size(458, 109);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Projekt bearbeiten";
             // 
             // Projekt_ProjektID
             // 
-            this.Projekt_ProjektID.Location = new System.Drawing.Point(148, 56);
+            this.Projekt_ProjektID.Location = new System.Drawing.Point(160, 86);
             this.Projekt_ProjektID.Name = "Projekt_ProjektID";
             this.Projekt_ProjektID.Size = new System.Drawing.Size(296, 20);
             this.Projekt_ProjektID.TabIndex = 19;
             this.Projekt_ProjektID.Visible = false;
             // 
-            // Projket_Name
+            // Projekt_Name
             // 
-            this.Projket_Name.Location = new System.Drawing.Point(148, 22);
-            this.Projket_Name.Name = "Projket_Name";
-            this.Projket_Name.Size = new System.Drawing.Size(296, 20);
-            this.Projket_Name.TabIndex = 15;
+            this.Projekt_Name.Location = new System.Drawing.Point(148, 22);
+            this.Projekt_Name.Name = "Projekt_Name";
+            this.Projekt_Name.Size = new System.Drawing.Size(296, 20);
+            this.Projekt_Name.TabIndex = 15;
             // 
             // label1
             // 
@@ -158,13 +162,21 @@ namespace backoffice
             this.label1.TabIndex = 0;
             this.label1.Text = "Projektname";
             // 
+            // Projekt_Datum
+            // 
+            this.Projekt_Datum.Location = new System.Drawing.Point(148, 49);
+            this.Projekt_Datum.Name = "Projekt_Datum";
+            this.Projekt_Datum.Size = new System.Drawing.Size(296, 20);
+            this.Projekt_Datum.TabIndex = 20;
+            // 
             // EditProjektForm
             // 
             this.BackColor = System.Drawing.Color.Wheat;
-            this.ClientSize = new System.Drawing.Size(598, 99);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(598, 256);
+            this.Controls.Add(this.Projekt_ProjektID);
             this.Controls.Add(this.Discard_Projekt);
             this.Controls.Add(this.Save_Projekt);
+            this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "EditProjektForm";
@@ -172,6 +184,7 @@ namespace backoffice
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

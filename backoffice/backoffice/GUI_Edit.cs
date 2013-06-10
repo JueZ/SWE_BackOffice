@@ -106,10 +106,13 @@ namespace backoffice
                     {
                         x = selRow.Index;
                         angebot.AngebotID = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["AngebotID"].Index].Value.ToString());
-                        angebot.Angebotsname = dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotsname"].Index].Value.ToString();
+                        angebot.FK_ProjektID = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["FK_ProjektID"].Index].Value.ToString());
+                        angebot.FK_KundeID = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["FK_KundeID"].Index].Value.ToString());
+                        angebot.Angebotsname = Convert.ToString(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotsname"].Index].Value.ToString());
                         angebot.Angebotssumme = float.Parse(Convert.ToString(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Angebotssumme"].Index].Value.ToString()));
                         angebot.Datum = Convert.ToDateTime(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Datum"].Index].Value.ToString());
                         angebot.Dauer = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["Dauer"].Index].Value.ToString());
+                        angebot.UmsetzungsChance = Convert.ToInt32(dataGridViewAngebot.Rows[x].Cells[dataGridViewAngebot.Columns["UmsetzungsChance"].Index].Value.ToString());
 
                         this.editAngebotForm = new EditAngebotForm(angebot, false);
                         //on new editForm Close() the dataGridVIewKontakt will be refreshed
@@ -143,7 +146,11 @@ namespace backoffice
                     {
                         x = selRow.Index;
                         ausgangsrechnung.AusgangsrechnungID = Convert.ToInt32(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["AusgangsrechnungID"].Index].Value.ToString());
-                        ausgangsrechnung.Bezahlt = Convert.ToBoolean(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Bezahlt"].Index].Value.ToString());
+                        ausgangsrechnung.Projekt = Convert.ToString(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Projekt"].Index].Value.ToString());
+                        ausgangsrechnung.Kunde = Convert.ToString(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Kunde"].Index].Value.ToString());
+                        ausgangsrechnung.Datum = Convert.ToDateTime(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Datum"].Index].Value.ToString());
+                        ausgangsrechnung.Summe = float.Parse(Convert.ToString((dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Summe"].Index].Value.ToString())));
+                        ausgangsrechnung.Bezahlt = Convert.ToString(dataGridViewAusgangsrechnung.Rows[x].Cells[dataGridViewAusgangsrechnung.Columns["Bezahlt"].Index].Value.ToString());
 
                         this.editAusgangsrechnungenForm = new EditAusgangsrechnungenForm(ausgangsrechnung, false);
                         //on new editForm Close() the dataGridVIewKontakt will be refreshed
@@ -161,6 +168,10 @@ namespace backoffice
                         x = selRow.Index;
                         eingangsrechnung.EingangsrechnungID = Convert.ToInt32(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["EingangsrechnungID"].Index].Value.ToString());
                         eingangsrechnung.FK_KontaktID = Convert.ToInt32(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["FK_KontaktID"].Index].Value.ToString());
+                        eingangsrechnung.Beschreibung = Convert.ToString(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["Beschreibung"].Index].Value.ToString());
+                        eingangsrechnung.Summe = float.Parse(Convert.ToString(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["Summe"].Index].Value.ToString()));
+                        eingangsrechnung.Datum = Convert.ToDateTime(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["Datum"].Index].Value.ToString());
+                        eingangsrechnung.Bezahlt = Convert.ToString(dataGridViewEingangsrechnung.Rows[x].Cells[dataGridViewEingangsrechnung.Columns["Bezahlt"].Index].Value.ToString());
 
                         this.editEingangsrechnungenForm = new EditEingangsrechnungenForm(eingangsrechnung, false);
                         //on new editForm Close() the dataGridVIewKontakt will be refreshed

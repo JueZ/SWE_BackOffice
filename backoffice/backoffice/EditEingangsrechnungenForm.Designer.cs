@@ -32,6 +32,10 @@
             this.Eingangsrechnung_EingangsrechnungID = new System.Windows.Forms.TextBox();
             this.Save_Eingangsrechnung = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.Eingangsrechnung_Summe = new System.Windows.Forms.TextBox();
+            this.Eingangsrechnung_Beschreibung = new System.Windows.Forms.TextBox();
+            this.Eingangsrechnung_Datum = new System.Windows.Forms.TextBox();
+            this.Eingangsrechnung_Bezahlt = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Eingangsrechnung_FK_KontaktID
@@ -43,7 +47,7 @@
             // 
             // Eingangsrechnung_EingangsrechnungID
             // 
-            this.Eingangsrechnung_EingangsrechnungID.Location = new System.Drawing.Point(13, 40);
+            this.Eingangsrechnung_EingangsrechnungID.Location = new System.Drawing.Point(13, 140);
             this.Eingangsrechnung_EingangsrechnungID.Name = "Eingangsrechnung_EingangsrechnungID";
             this.Eingangsrechnung_EingangsrechnungID.Size = new System.Drawing.Size(100, 20);
             this.Eingangsrechnung_EingangsrechnungID.TabIndex = 1;
@@ -69,11 +73,46 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Discard_Eingangsrechnung_Click);
             // 
+            // Eingangsrechnung_Summe
+            // 
+            this.Eingangsrechnung_Summe.Location = new System.Drawing.Point(13, 39);
+            this.Eingangsrechnung_Summe.Name = "Eingangsrechnung_Summe";
+            this.Eingangsrechnung_Summe.Size = new System.Drawing.Size(100, 20);
+            this.Eingangsrechnung_Summe.TabIndex = 4;
+            // 
+            // Eingangsrechnung_Beschreibung
+            // 
+            this.Eingangsrechnung_Beschreibung.Location = new System.Drawing.Point(13, 91);
+            this.Eingangsrechnung_Beschreibung.Name = "Eingangsrechnung_Beschreibung";
+            this.Eingangsrechnung_Beschreibung.Size = new System.Drawing.Size(100, 20);
+            this.Eingangsrechnung_Beschreibung.TabIndex = 5;
+            // 
+            // Eingangsrechnung_Datum
+            // 
+            this.Eingangsrechnung_Datum.Location = new System.Drawing.Point(13, 65);
+            this.Eingangsrechnung_Datum.Name = "Eingangsrechnung_Datum";
+            this.Eingangsrechnung_Datum.Size = new System.Drawing.Size(100, 20);
+            this.Eingangsrechnung_Datum.TabIndex = 7;
+            // 
+            // Eingangsrechnung_Bezahlt
+            // 
+            this.Eingangsrechnung_Bezahlt.AutoSize = true;
+            this.Eingangsrechnung_Bezahlt.Location = new System.Drawing.Point(52, 117);
+            this.Eingangsrechnung_Bezahlt.Name = "Eingangsrechnung_Bezahlt";
+            this.Eingangsrechnung_Bezahlt.Size = new System.Drawing.Size(61, 17);
+            this.Eingangsrechnung_Bezahlt.TabIndex = 8;
+            this.Eingangsrechnung_Bezahlt.Text = "Bezahlt";
+            this.Eingangsrechnung_Bezahlt.UseVisualStyleBackColor = true;
+            // 
             // EditEingangsrechnungenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.Eingangsrechnung_Bezahlt);
+            this.Controls.Add(this.Eingangsrechnung_Datum);
+            this.Controls.Add(this.Eingangsrechnung_Beschreibung);
+            this.Controls.Add(this.Eingangsrechnung_Summe);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.Save_Eingangsrechnung);
             this.Controls.Add(this.Eingangsrechnung_EingangsrechnungID);
@@ -91,5 +130,9 @@
         private System.Windows.Forms.TextBox Eingangsrechnung_EingangsrechnungID;
         private System.Windows.Forms.Button Save_Eingangsrechnung;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox Eingangsrechnung_Summe;
+        private System.Windows.Forms.TextBox Eingangsrechnung_Beschreibung;
+        private System.Windows.Forms.TextBox Eingangsrechnung_Datum;
+        private System.Windows.Forms.CheckBox Eingangsrechnung_Bezahlt;
     }
 }

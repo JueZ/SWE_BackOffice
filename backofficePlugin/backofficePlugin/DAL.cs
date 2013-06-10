@@ -36,21 +36,20 @@ namespace backofficePlugin
                             sqlQuery = "SELECT * FROM dbo." + from;
                             break;
                         case "Angebot":
-                            sqlQuery = "SELECT AngebotID, FK_ProjektID, FK_KundeID, FK_AusgangsrechnungID, Angebotsname, Angebotssumme, Kunde, Dauer, Datum, UmsetzungsChance FROM dbo." + from + "JOIN dbo.Kunde ON (Kunde.FK_KundeID = Kunde.KundeID)";
+                            sqlQuery = "SELECT AngebotID, FK_ProjektID, FK_KundeID, Angebotsname, Angebotssumme, Nachname, Dauer, Datum, UmsetzungsChance FROM " + from + " JOIN dbo.Kunde ON FK_KundeID = KundeID";
                             break;
                         case "Projekt":
-                            sqlQuery = "SELECT * FROM dbo." + from;
+                            sqlQuery = "SELECT ProjektID, Name, Nachname AS Kunde, Projekt.Datum, Projekt.Dauer, SUM(Angebotssumme) AS Wert FROM dbo." + from + " JOIN Angebot ON ProjektID = FK_ProjektID JOIN Kunde ON FK_KundeID = KundeID GROUP BY ProjektID, Name, Nachname, Projekt.Datum, Projekt.Dauer";
                             break;
                         case "Ausgangsrechnung":
-                            sqlQuery = "SELECT AusgangsrechnungID, Name, Nachname, Datum, SUM(Angebotssumme), Bezahlt FROM dbo." + from +" JOIN Projekt ON AusgangsrechnungID = ProjektID JOIN Kunden ON FK_KundeID = KundeID JOIN Angebot ON AusgangsrechnungID = FK_AusgangsrechnungID WHERE ";
+                            sqlQuery = "SELECT AusgangsrechnungID, Name AS Projekt, Nachname AS Kunde, Projekt.Datum, SUM(Angebotssumme) AS Summe, Bezahlt FROM " + from + " JOIN Projekt ON AusgangsrechnungID = ProjektID JOIN dbo.Angebot ON ProjektID = FK_ProjektID JOIN Kunde ON FK_KundeID = KundeID GROUP BY AusgangsrechnungID, Name, Nachname, Projekt.Datum, Bezahlt";
                             break;
                         case "Eingangsrechnung":
-                            sqlQuery = "SELECT * FROM dbo." + from;
+                            sqlQuery = "SELECT EingangsrechnungID, FK_KontaktID, Firma, Beschreibung, Datum, Summe, Bezahlt FROM " + from + " JOIN Kontakt ON FK_KontaktID = KontaktID GROUP BY EingangsrechnungID, FK_KontaktID, Firma, Beschreibung, Datum, Summe, Bezahlt";
                             break;
                         case "Konto":
-                            sqlQuery = "SELECT * FROM dbo." + from;
+                            sqlQuery = "SELECT BuchungszeileID, Konto.FK_AusgangsrechnungID, FK_EingangsrechnungID, Name, Beschreibung, Projekt.Datum, Eingangsrechnung.Datum, SUM(Angebotssumme) AS Summe, Summe FROM " + from + " JOIN Ausgangsrechnung ON Konto.FK_AusgangsrechnungID = AusgangsrechnungID JOIN Eingangsrechnung ON FK_EingangsrechnungID = EingangsrechnungID JOIN Projekt ON Konto.FK_AusgangsrechnungID = ProjektID JOIN Angebot ON Konto.FK_AusgangsrechnungID = Angebot.FK_ProjektID GROUP BY BuchungszeileID, Konto.FK_AusgangsrechnungID, FK_EingangsrechnungID, Name, Beschreibung, Projekt.Datum, Eingangsrechnung.Datum, Summe";
                             break;
-                    
                     }
                 else
                 {
@@ -66,7 +65,7 @@ namespace backofficePlugin
                             sqlQuery = "SELECT * FROM dbo.Angebot JOIN dbo.Projekt ON (Angebot.FK_ProjektID = Projekt.ProjektID) WHERE Angebotsname LIKE @param";
                             break;
                         case "Projekt":
-                            sqlQuery = "SELECT * from dbo." + from + " WHERE Name like @param";
+                            sqlQuery = "SELECT ProjektID, Name, Nachname AS Kunde, Projekt.Datum, Projekt.Dauer, SUM(Angebotssumme) AS Wert FROM dbo." + from + " JOIN Angebot ON ProjektID = FK_ProjektID JOIN Kunde ON FK_KundeID = KundeID GROUP BY ProjektID, Name, Nachname, Projekt.Datum, Projekt.Dauer WHERE Name LIKE @param";
                             break;
                         case "Ausgangsrechnung":
                             sqlQuery = "SELECT * from dbo." + from;
@@ -77,7 +76,6 @@ namespace backofficePlugin
                         case "Konto":
                             sqlQuery = "SELECT * from dbo." + from + "WHERE Name @param";
                             break;
-                        
                     }
                     
                 }
@@ -85,6 +83,7 @@ namespace backofficePlugin
                 SqlCommand command = new SqlCommand(sqlQuery, sqlCon);
                 command.Parameters.AddWithValue("@param",  _sqlSELECT);
                 //command.Parameters.AddWithValue("@from", from);
+                Console.WriteLine(_sqlSELECT);
 
                 sqlCon.Open();
                 SqlDataReader reader = command.ExecuteReader();
@@ -149,7 +148,6 @@ namespace backofficePlugin
                             k.AngebotID = Convert.ToInt32(reihe["AngebotID"]);
                             k.FK_ProjektID = Convert.ToInt32(reihe["FK_ProjektID"]);
                             k.FK_KundeID = Convert.ToInt32(reihe["FK_KundeID"]);
-                            k.FK_AusgangsrechnungID = Convert.ToInt32(reihe["FK_AusgangsrechnungID"]);
                             k.Angebotsname = Convert.ToString(reihe["Angebotsname"]);
                             k.Angebotssumme = float.Parse(Convert.ToString(reihe["Angebotssumme"]));
                             k.Dauer = Convert.ToInt32(reihe["Dauer"]);
@@ -179,12 +177,11 @@ namespace backofficePlugin
                             Ausgangsrechnung k = new Ausgangsrechnung();
 
                             k.AusgangsrechnungID = Convert.ToInt32(reihe["AusgangsrechnungID"]);
-                            k.FK_ProjektID = Convert.ToInt32(reihe["FK_ProjektID"]);
                             k.Projekt = Convert.ToString(reihe["Projekt"]);
                             k.Kunde = Convert.ToString(reihe["Kunde"]);
                             k.Datum = Convert.ToDateTime(reihe["Datum"]);
                             k.Summe = float.Parse(Convert.ToString(reihe["Summe"]));
-                            k.Bezahlt = Convert.ToBoolean(reihe["Bezahlt"]);
+                            k.Bezahlt = Convert.ToString(reihe["Bezahlt"]);
                             liste.Add(k);
                         }
                         break;
@@ -199,7 +196,7 @@ namespace backofficePlugin
                             k.Beschreibung = Convert.ToString(reihe["Beschreibung"]);
                             k.Datum = Convert.ToDateTime(reihe["Datum"]);
                             k.Summe = float.Parse(Convert.ToString(reihe["Summe"]));
-                            k.Bezahlt = Convert.ToBoolean(reihe["Bezahlt"]);
+                            k.Bezahlt = Convert.ToString(reihe["Bezahlt"]);
                             liste.Add(k);
                         }
                         break;
@@ -298,6 +295,8 @@ namespace backofficePlugin
                         foreach (Angebot a in liste)
                         {
                             sqlQuery = "UPDATE dbo.Angebot SET ";
+                            sqlQuery += "FK_ProjektID = '" + a.FK_ProjektID.ToString() + "',";
+                            sqlQuery += "FK_KundeID = '" + a.FK_KundeID.ToString() + "',";
                             sqlQuery += "Angebotsname = '" + a.Angebotsname.ToString() + "',";
                             sqlQuery += "Angebotssumme = '" + a.Angebotssumme.ToString() + "',";
                             sqlQuery += "Dauer = '" + a.Dauer.ToString() + "',";
@@ -442,10 +441,9 @@ namespace backofficePlugin
                                 foreach (Angebot k in liste)
                                 {
                                     sqlQuery = "INSERT INTO dbo.Angebot ";
-                                    sqlQuery += "([FK_ProjektID] ,[FK_KundeID], [FK_AusgangsrechnungID], [Angebotsname], [Angebotssumme], [Dauer], [Datum], [UmsetzungsChance]) VALUES (";
-                                    sqlQuery += "'" + k.FK_ProjektID.ToString() + "',";
-                                    sqlQuery += "'" + k.FK_KundeID.ToString() + "',";
-                                    sqlQuery += "'" + k.FK_AusgangsrechnungID.ToString() + "',";
+                                    sqlQuery += "([FK_ProjektID] ,[FK_KundeID], [Angebotsname], [Angebotssumme], [Dauer], [Datum], [UmsetzungsChance]) VALUES (";
+                                    sqlQuery += "'" + k.FK_ProjektID.ToString() + "', ";
+                                    sqlQuery += "'" + k.FK_KundeID.ToString() + "', ";
                                     sqlQuery += "'" + k.Angebotsname.ToString() + "',";
                                     sqlQuery += "'" + k.Angebotssumme.ToString() + "',";
                                     sqlQuery += "'" + k.Dauer.ToString() + "',";
@@ -456,42 +454,27 @@ namespace backofficePlugin
                                     sqlCmd.CommandText = sqlQuery;
                                     a += sqlCmd.ExecuteNonQuery();
                                 }
-
-                                foreach (Ausgangsrechnung k in liste)
-                                {
-                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung ";
-                                    sqlQuery += "([FK_ProjektID]) VALUES ((SELECT TOP 1 ProjektID FROM dbo.Projekt ORDER BY ProjektID DESC))";
-
-
-                                    sqlCmd.CommandText = sqlQuery;
-                                    a += sqlCmd.ExecuteNonQuery();
-                                }
                                 break;
                     case "Projekt":
                                 foreach (Projekt k in liste)
                                 {
                                     sqlQuery = "INSERT INTO dbo.Projekt ";
-                                    sqlQuery = "([Name])  VALUES (";
-                                    sqlQuery += "'" + k.Name.ToString() + "')";
+                                    sqlQuery += "([Name], [Datum]) VALUES (";
+                                    sqlQuery += "'" + k.Name.ToString() + "', ";
+                                    sqlQuery += "'" + k.Datum.ToString() + "')";
 
 
                                     sqlCmd.CommandText = sqlQuery;
                                     a += sqlCmd.ExecuteNonQuery();
-                                }
 
-                                foreach (Ausgangsrechnung k in liste)
-                                {
-                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung DEFAULT VALUES";
+                                    sqlQuery = "INSERT INTO dbo.Ausgangsrechnung ([AusgangsrechnungID]) VALUES ((SELECT TOP 1 ProjektID FROM dbo.Projekt ORDER BY ProjektID DESC))";
 
 
                                     sqlCmd.CommandText = sqlQuery;
                                     a += sqlCmd.ExecuteNonQuery();
-                                }
 
-                                foreach (Konto k in liste)
-                                {
                                     sqlQuery = "INSERT INTO dbo.Konto ";
-                                    sqlQuery += "([FK_Ausgangsrechnung]) VALUES ((SELECT TOP 1 AusgangsrechnungID FROM dbo.Ausgangsrechnung ORDER BY AusgangsrechnungID DESC))";
+                                    sqlQuery += "([FK_AusgangsrechnungID]) VALUES ((SELECT TOP 1 AusgangsrechnungID FROM dbo.Ausgangsrechnung ORDER BY AusgangsrechnungID DESC))";
 
 
                                     sqlCmd.CommandText = sqlQuery;
@@ -502,21 +485,19 @@ namespace backofficePlugin
                                 foreach (Eingangsrechnung k in liste)
                                 {
                                     sqlQuery = "INSERT INTO dbo.Eingangsrechnung ";
-                                    sqlQuery = "([FK_Kontakt_ID], [Summe], [Datum], [Beschreibung]) VALUES (";
+                                    sqlQuery += "([FK_KontaktID], [Summe], [Datum], [Beschreibung], [Bezahlt]) VALUES (";
                                     sqlQuery += "'" + k.FK_KontaktID.ToString() + "',";
                                     sqlQuery += "'" + k.Summe.ToString() + "',";
                                     sqlQuery += "'" + k.Datum.ToString() + "',";
-                                    sqlQuery += "'" + k.Beschreibung.ToString() + "')";
+                                    sqlQuery += "'" + k.Beschreibung.ToString() + "',";
+                                    sqlQuery += "'" + k.Bezahlt.ToString() + "')";
 
 
                                     sqlCmd.CommandText = sqlQuery;
                                     a += sqlCmd.ExecuteNonQuery();
-                                }
 
-                                foreach (Konto k in liste)
-                                {
                                     sqlQuery = "INSERT INTO dbo.Konto ";
-                                    sqlQuery += "([FK_Eingangsrechnung]) VALUES ((SELECT TOP 1 EingangsrechnungID FROM dbo.Eingangsrechnung ORDER BY EingangsrechnungID DESC))";
+                                    sqlQuery += "([FK_EingangsrechnungID]) VALUES ((SELECT TOP 1 EingangsrechnungID FROM dbo.Eingangsrechnung ORDER BY EingangsrechnungID DESC))";
 
 
                                     sqlCmd.CommandText = sqlQuery;
@@ -592,29 +573,8 @@ namespace backofficePlugin
 
                             sqlCmd.CommandText = sqlQuery;
                             a += sqlCmd.ExecuteNonQuery();
-                        }
+                         }
                         break;
-                    case "Ausgangsrechnung":
-                        foreach (Ausgangsrechnung k in liste)
-                        {
-                            sqlQuery = "DELETE FROM dbo.Ausgangsrechnung ";
-                            sqlQuery += "WHERE AusgangsrechnungID = '" + k.AusgangsrechnungID.ToString() + "';";
-
-                            sqlCmd.CommandText = sqlQuery;
-                            a += sqlCmd.ExecuteNonQuery();
-                        }
-                        break;
-                    case "Eingangsrechnung":
-                        foreach (Eingangsrechnung k in liste)
-                        {
-                            sqlQuery = "DELETE FROM dbo.Eingangsrechnung ";
-                            sqlQuery += "WHERE EingangsrechnungID = '" + k.EingangsrechnungID.ToString() + "';";
-
-                            sqlCmd.CommandText = sqlQuery;
-                            a += sqlCmd.ExecuteNonQuery();
-                        }
-                        break;
-
                 }
                 sqlCon.Close();
 
