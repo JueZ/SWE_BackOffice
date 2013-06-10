@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backofficePlugin", "backofficePlugin\backofficePlugin.csproj", "{28B45DD8-9C2F-4607-8B32-3B31D00D521B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backofficepluginUnitTest", "backofficepluginUnitTest\backofficepluginUnitTest.csproj", "{FDF23F1C-2AEB-4F8E-89B5-08B9A077C56F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{28B45DD8-9C2F-4607-8B32-3B31D00D521B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28B45DD8-9C2F-4607-8B32-3B31D00D521B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28B45DD8-9C2F-4607-8B32-3B31D00D521B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF23F1C-2AEB-4F8E-89B5-08B9A077C56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF23F1C-2AEB-4F8E-89B5-08B9A077C56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF23F1C-2AEB-4F8E-89B5-08B9A077C56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF23F1C-2AEB-4F8E-89B5-08B9A077C56F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
