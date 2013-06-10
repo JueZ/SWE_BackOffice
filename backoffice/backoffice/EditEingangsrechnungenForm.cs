@@ -61,7 +61,7 @@ namespace backoffice
 
 
             a.FK_KontaktID = Convert.ToInt32(Eingangsrechnung_FK_KontaktID.Text);
-            a.Summe = Convert.ToInt32(Eingangsrechnung_FK_KontaktID.Text);
+            a.Summe = float.Parse(Convert.ToString(Eingangsrechnung_Summe.Text));
             a.Datum = Convert.ToDateTime(Eingangsrechnung_Datum.Text);
             a.Beschreibung = Convert.ToString(Eingangsrechnung_Beschreibung.Text);
             if (Eingangsrechnung_Bezahlt.Checked)
