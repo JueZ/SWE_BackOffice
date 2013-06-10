@@ -312,7 +312,9 @@ namespace backofficePlugin
                         foreach (Projekt a in liste)
                         {
                             sqlQuery = "UPDATE dbo.Projekt SET ";
-                            sqlQuery += "Name = '" + a.Name.ToString() + "'";
+                            sqlQuery += "Name = '" + a.Name.ToString() + "',";
+                            sqlQuery += "Dauer = '" + a.Dauer.ToString() + "',";
+                            sqlQuery += "Datum = '" + a.Datum.ToString() + "'";
                             sqlQuery += "WHERE ProjektID = '" + a.ProjektID.ToString() + "';";
                             sqlCmd.CommandText = sqlQuery;
                             x += sqlCmd.ExecuteNonQuery();

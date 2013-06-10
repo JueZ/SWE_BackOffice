@@ -36,6 +36,7 @@
             this.Konto = new System.Windows.Forms.Button();
             this.textBoxKonto = new System.Windows.Forms.TextBox();
             this.Eingangsrechnungen = new System.Windows.Forms.TabPage();
+            this.EingangsrechnungenPDF = new System.Windows.Forms.Button();
             this.deleteEingangsrechnung = new System.Windows.Forms.Button();
             this.editEingangsrechnung = new System.Windows.Forms.Button();
             this.addEingangsrechnung = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.Ausgangsrechnung = new System.Windows.Forms.Button();
             this.textBoxAusgangsrechnung = new System.Windows.Forms.TextBox();
             this.Projekte = new System.Windows.Forms.TabPage();
+            this.ZeitenImportieren = new System.Windows.Forms.Button();
             this.deleteProjekt = new System.Windows.Forms.Button();
             this.editProjekt = new System.Windows.Forms.Button();
             this.addProjekt = new System.Windows.Forms.Button();
@@ -87,6 +89,7 @@
             this.Kunde = new System.Windows.Forms.Button();
             this.textBoxKunde = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.KontoExportieren = new System.Windows.Forms.Button();
             this.KontoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKonto)).BeginInit();
             this.Eingangsrechnungen.SuspendLayout();
@@ -107,6 +110,7 @@
             // KontoTab
             // 
             this.KontoTab.BackColor = System.Drawing.Color.Wheat;
+            this.KontoTab.Controls.Add(this.KontoExportieren);
             this.KontoTab.Controls.Add(this.deleteKonto);
             this.KontoTab.Controls.Add(this.editKonto);
             this.KontoTab.Controls.Add(this.dataGridViewKonto);
@@ -172,6 +176,7 @@
             // Eingangsrechnungen
             // 
             this.Eingangsrechnungen.BackColor = System.Drawing.Color.Wheat;
+            this.Eingangsrechnungen.Controls.Add(this.EingangsrechnungenPDF);
             this.Eingangsrechnungen.Controls.Add(this.deleteEingangsrechnung);
             this.Eingangsrechnungen.Controls.Add(this.editEingangsrechnung);
             this.Eingangsrechnungen.Controls.Add(this.addEingangsrechnung);
@@ -185,6 +190,16 @@
             this.Eingangsrechnungen.Size = new System.Drawing.Size(1138, 553);
             this.Eingangsrechnungen.TabIndex = 5;
             this.Eingangsrechnungen.Text = "Eingangsrechnungen";
+            // 
+            // EingangsrechnungenPDF
+            // 
+            this.EingangsrechnungenPDF.Location = new System.Drawing.Point(557, 10);
+            this.EingangsrechnungenPDF.Name = "EingangsrechnungenPDF";
+            this.EingangsrechnungenPDF.Size = new System.Drawing.Size(122, 23);
+            this.EingangsrechnungenPDF.TabIndex = 14;
+            this.EingangsrechnungenPDF.Text = "als PDF exportieren";
+            this.EingangsrechnungenPDF.UseVisualStyleBackColor = true;
+            this.EingangsrechnungenPDF.Click += new System.EventHandler(this.EingangsrechnungenPDF_Click);
             // 
             // deleteEingangsrechnung
             // 
@@ -358,6 +373,7 @@
             // Projekte
             // 
             this.Projekte.BackColor = System.Drawing.Color.Wheat;
+            this.Projekte.Controls.Add(this.ZeitenImportieren);
             this.Projekte.Controls.Add(this.deleteProjekt);
             this.Projekte.Controls.Add(this.editProjekt);
             this.Projekte.Controls.Add(this.addProjekt);
@@ -371,6 +387,16 @@
             this.Projekte.Size = new System.Drawing.Size(1138, 553);
             this.Projekte.TabIndex = 3;
             this.Projekte.Text = "Projekte";
+            // 
+            // ZeitenImportieren
+            // 
+            this.ZeitenImportieren.Location = new System.Drawing.Point(536, 2);
+            this.ZeitenImportieren.Name = "ZeitenImportieren";
+            this.ZeitenImportieren.Size = new System.Drawing.Size(161, 42);
+            this.ZeitenImportieren.TabIndex = 13;
+            this.ZeitenImportieren.Text = "Projektzeiten aus Datei importieren";
+            this.ZeitenImportieren.UseVisualStyleBackColor = true;
+            this.ZeitenImportieren.Click += new System.EventHandler(this.ZeitenImportieren_Click);
             // 
             // deleteProjekt
             // 
@@ -751,6 +777,16 @@
             this.tabControl1.Size = new System.Drawing.Size(1146, 579);
             this.tabControl1.TabIndex = 0;
             // 
+            // KontoExportieren
+            // 
+            this.KontoExportieren.Location = new System.Drawing.Point(536, 0);
+            this.KontoExportieren.Name = "KontoExportieren";
+            this.KontoExportieren.Size = new System.Drawing.Size(161, 48);
+            this.KontoExportieren.TabIndex = 15;
+            this.KontoExportieren.Text = "Kontodaten als PDF exportieren";
+            this.KontoExportieren.UseVisualStyleBackColor = true;
+            this.KontoExportieren.Click += new System.EventHandler(this.KontoExportieren_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -847,6 +883,9 @@
         private System.Windows.Forms.Button deleteAusgangsrechnung;
         private System.Windows.Forms.Button deleteAngebot;
         private System.Windows.Forms.Button AusgangsrechnungenPDF;
+        private System.Windows.Forms.Button EingangsrechnungenPDF;
+        private System.Windows.Forms.Button ZeitenImportieren;
+        private System.Windows.Forms.Button KontoExportieren;
 
     }
 }

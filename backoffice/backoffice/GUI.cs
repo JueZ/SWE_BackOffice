@@ -102,56 +102,230 @@ namespace backoffice
            
         }
 
-        //------------------------------------------------------------------------EditFormClosedEventHandler for GUI refresh END----------------------------------------------------//
 
-        private void getOpenOutReceipt_Click(object sender, EventArgs e)
-        {
-            List<EntityInterface> liste = new List<EntityInterface>();
-            liste = myRequest.request("none", "Ausgangsrechnungbezahlt");
-            List<Ausgangsrechnung> rechnungliste = liste.Cast<Ausgangsrechnung>().ToList();
-            dataGridViewAusgangsrechnung.DataSource = rechnungliste;
-            dataGridViewAusgangsrechnung.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
-
-        private void getOpenInreceipt_Click(object sender, EventArgs e)
-        {
-            List<EntityInterface> liste = new List<EntityInterface>();
-            liste = myRequest.request("none", "Eingangsrechnungbezahlt");
-            List<Eingangsrechnung> rechnungliste = liste.Cast<Eingangsrechnung>().ToList();
-            dataGridViewEingangsrechnung.DataSource = rechnungliste;
-            dataGridViewEingangsrechnung.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
 
         private void AusgangsrechnungenPDF_Click(object sender, EventArgs e)
         {
-            string pdfString = "";
-            Document pdfDoc = new Document();
-            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new System.IO.FileStream(System.IO.Directory.GetCurrentDirectory() + "\\exportAusgangsrechnungen.pdf",
-               System.IO.FileMode.Create));
-
-            pdfDoc.Open();
-
-            foreach (DataGridViewRow row in dataGridViewAusgangsrechnung.SelectedRows)
+            try
             {
-               
-                foreach(DataGridViewCell cell in row.Cells)
+                string pdfPath = System.IO.Directory.GetCurrentDirectory() + "\\Ausgangsrechnungen.pdf";
+                SaveFileDialog sDialog = new SaveFileDialog();
+                DialogResult result = sDialog.ShowDialog();
+                if (result == DialogResult.OK) 
                 {
-                    
-                    pdfString += cell.Value.ToString() + " ";
+                    pdfPath = sDialog.FileName;
                 }
-                pdfDoc.Add(new Paragraph (pdfString));
-                pdfString = "";
+                
 
+
+                Document pdfDoc = new Document();
+                PdfPTable table = new PdfPTable(6);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new System.IO.FileStream(pdfPath,
+                   System.IO.FileMode.Create));
+
+                pdfDoc.Open();
+                PdfPCell tcell = new PdfPCell(new Phrase("Ausgangsrechnungen"));
+                tcell.Colspan = 6;
+                tcell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(tcell);
+                table.AddCell("AusgangsrechnungID");
+                table.AddCell("Beschreibung");
+                table.AddCell("Kunde");
+                table.AddCell("Zeit");
+                table.AddCell("Summe");
+                table.AddCell("bereits bezahlt");
+
+                foreach (DataGridViewRow row in dataGridViewAusgangsrechnung.SelectedRows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+
+                        table.AddCell(cell.Value.ToString());
+                    }
+                }
+
+                pdfDoc.Add(table);
+
+
+                PdfContentByte cb = writer.DirectContent;
+                cb.MoveTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height);
+                cb.LineTo(pdfDoc.PageSize.Width / 2, pdfDoc.PageSize.Height);
+                cb.Stroke();
+
+                pdfDoc.Close();
+                MessageBox.Show("Die markierten Ausgangsrechnungen wurden erfolgreich exportiert!");
             }
+            catch
+            {
+                MessageBox.Show("Beim exportieren der Ausgangsrechnungen ist ein Fehler aufgetreten!");
+            }
+        }
 
-            
-            
-            PdfContentByte cb = writer.DirectContent;
-            cb.MoveTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height);
-            cb.LineTo(pdfDoc.PageSize.Width / 2, pdfDoc.PageSize.Height);
-            cb.Stroke();
+        private void EingangsrechnungenPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pdfPath = System.IO.Directory.GetCurrentDirectory() + "\\Eingangsrechnungen.pdf";
+                SaveFileDialog sDialog = new SaveFileDialog();
+                DialogResult result = sDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    pdfPath = sDialog.FileName;
+                }
 
-            pdfDoc.Close(); 
+
+
+                Document pdfDoc = new Document();
+                PdfPTable table = new PdfPTable(7);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new System.IO.FileStream(pdfPath,
+                   System.IO.FileMode.Create));
+
+                pdfDoc.Open();
+                PdfPCell tcell = new PdfPCell(new Phrase("Eingangsrechnungen"));
+                tcell.Colspan = 7;
+                tcell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(tcell);
+                table.AddCell("EingangsrechnungID");
+                table.AddCell("KontaktID");
+                table.AddCell("Kontakt");
+                table.AddCell("Beschreibung");
+                table.AddCell("Zeit");
+                table.AddCell("Summe");
+                table.AddCell("bereits bezahlt");
+
+                foreach (DataGridViewRow row in dataGridViewEingangsrechnung.SelectedRows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+
+                        table.AddCell(cell.Value.ToString());
+                    }
+                }
+
+                pdfDoc.Add(table);
+
+
+                PdfContentByte cb = writer.DirectContent;
+                cb.MoveTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height);
+                cb.LineTo(pdfDoc.PageSize.Width / 2, pdfDoc.PageSize.Height);
+                cb.Stroke();
+
+                pdfDoc.Close();
+                MessageBox.Show("Die markierten Eingangsrechnungen wurden erfolgreich exportiert!");
+            }
+            catch
+            {
+                MessageBox.Show("Beim exportieren der Eingangsrechnungen ist ein Fehler aufgetreten!");
+            }
+        }
+
+        private void ZeitenImportieren_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string[] lines;
+                List<EntityInterface> liste = new List<EntityInterface>();
+                liste = myRequest.request("none", "Projekt");
+                
+                List<EntityInterface> projektListeFile = new List<EntityInterface>();
+
+
+                OpenFileDialog fDialog = new OpenFileDialog();
+                DialogResult result = fDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    lines = System.IO.File.ReadAllLines(@fDialog.FileName);
+
+                    foreach (string line in lines)
+                    {
+
+                        if (!string.IsNullOrEmpty(line))
+                        {
+                            Projekt p = new Projekt();
+                            p.ProjektID = Convert.ToInt32(line.Split(';')[0]);
+                            p.Dauer = float.Parse(line.Split(';')[1]);
+                            projektListeFile.Add(p);
+                        }
+
+                    }
+                }
+                foreach (Projekt db in liste)
+                {
+                    foreach (Projekt file in projektListeFile)
+                    {
+                        if (db.ProjektID == file.ProjektID)
+                        {
+                            db.Dauer = file.Dauer;
+                        }
+                    }
+                }
+                
+                myRequest.edit(liste, "Projekt");
+                MessageBox.Show("Das Importieren der Projektzeiten war erfolgreich!");
+            }
+            catch
+            {
+                MessageBox.Show("Das Importieren der Projektzeiten ist felgeschlagen!");
+            }
+            
+        }
+
+        private void KontoExportieren_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pdfPath = System.IO.Directory.GetCurrentDirectory() + "\\Kontodaten.pdf";
+                SaveFileDialog sDialog = new SaveFileDialog();
+                DialogResult result = sDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    pdfPath = sDialog.FileName;
+                }
+
+
+
+                Document pdfDoc = new Document();
+                PdfPTable table = new PdfPTable(4);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new System.IO.FileStream(pdfPath,
+                   System.IO.FileMode.Create));
+
+                pdfDoc.Open();
+                PdfPCell tcell = new PdfPCell(new Phrase("Kontodaten"));
+                tcell.Colspan = 4;
+                tcell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+                table.AddCell(tcell);
+                table.AddCell("BuchungsID");
+                table.AddCell("Beschreibung");
+                table.AddCell("Datum");
+                table.AddCell("Summe");
+       
+
+                foreach (DataGridViewRow row in dataGridViewKonto.SelectedRows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+
+                        table.AddCell(cell.Value.ToString());
+                    }
+                }
+
+                pdfDoc.Add(table);
+
+
+                PdfContentByte cb = writer.DirectContent;
+                cb.MoveTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height);
+                cb.LineTo(pdfDoc.PageSize.Width / 2, pdfDoc.PageSize.Height);
+                cb.Stroke();
+
+                pdfDoc.Close();
+                MessageBox.Show("Die markierten Kontodaten wurden erfolgreich exportiert!");
+            }
+            catch
+            {
+                MessageBox.Show("Beim exportieren der Kontodaten ist ein Fehler aufgetreten!");
+            }
         }
 
 
